@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".ParticlesActivity">
+    tools:context=".GunplaListActivity">
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/ParticleRecyclerViewAdapter"
@@ -12,5 +12,8 @@
         android:layout_height="match_parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="parent" >
+
+    </androidx.recyclerview.widget.RecyclerView>
+
 </androidx.constraintlayout.widget.ConstraintLayout>

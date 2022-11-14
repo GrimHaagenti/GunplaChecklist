@@ -7,13 +7,14 @@ import android.view.ViewGroup
 import com.example.listas.databinding.ItemParticleBinding
 
 
-class ParticleRecyclerViewAdapter(val particles: List<String>):
-    RecyclerView.Adapter<ParticleRecyclerViewAdapter.ParticleVH>()
+class GunplaRecyclerViewAdapter(val particles: List<String>):
+    RecyclerView.Adapter<GunplaRecyclerViewAdapter.ParticleVH>()
 {
     inner class ParticleVH(binding: ItemParticleBinding):
         RecyclerView.ViewHolder(binding.root){
         val name = binding.particleText
         val image = binding.particleImage
+        val root = binding.root
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ParticleVH {
@@ -27,6 +28,10 @@ class ParticleRecyclerViewAdapter(val particles: List<String>):
         val element = particles[position]
 
         holder.name.text = element
+
+        holder.root.setOnClickListener {
+
+        }
 
 
     }

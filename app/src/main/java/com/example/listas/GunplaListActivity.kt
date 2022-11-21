@@ -4,6 +4,7 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import androidx.core.view.children
 import androidx.fragment.app.Fragment
+import androidx.fragment.app.FragmentManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.listas.databinding.ActivityParticlesBinding
 import com.google.gson.Gson
@@ -11,33 +12,37 @@ import com.google.gson.Gson
 class GunplaListActivity : AppCompatActivity() {
 
     private lateinit var  binding: ActivityParticlesBinding
-
+    private  lateinit var detailsPageFragment : DetailsPageFragment
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
         binding = ActivityParticlesBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
-        var gunpladatabase: GunplaDatabase = ReadJson()
+        var gunplaDatabase: GunplaDatabase = ReadJson()
 
-        var nameList = arrayListOf<String>()
+        var gunplaList = listOf<gunplaItem>()
 
-        gunpladatabase.GunplaDatabase.forEach(){
-            nameList.add(it.FullName)
-            println(it.FullName)
-        }
-        /*val detailsPageFragment = DetailsPageFragment()
-        setFragment(detailsPageFragment)
+        gunplaList = gunplaDatabase.GunplaDatabase
+
+        val detailsPageFragment = DetailsPageFragment(supportFragmentManager)
+        /*setFragment(detailsPageFragment)
         hideFragment(detailsPageFragment)
 */
-        binding.ParticleRecyclerViewAdapter.adapter = GunplaRecyclerViewAdapter(nameList)
-
-
+        binding.ParticleRecyclerViewAdapter.adapter = GunplaRecyclerViewAdapter(gunplaList,this)
 
 
 
 
     }
+
+    fun getBinding(): ActivityParticlesBinding{
+        return binding
+    }
+    fun getFragment(): DetailsPageFragment{
+        return detailsPageFragment
+    }
+
     fun setFragment(fragment: Fragment){
         supportFragmentManager.beginTransaction().apply {
             //replace(binding.fragmentContainer.id, fragment)

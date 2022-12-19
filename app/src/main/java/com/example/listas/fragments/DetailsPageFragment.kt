@@ -1,4 +1,4 @@
-package com.example.listas
+package com.example.listas.fragments
 
 import android.os.Bundle
 import android.view.LayoutInflater
@@ -17,6 +17,7 @@ class DetailsPageFragment(val suppManager:FragmentManager):Fragment() {
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
+
         binding.goBackButton.setOnClickListener { hideDetails()}
         binding = FragmentDetailsPageBinding.inflate(inflater)
         return binding.root

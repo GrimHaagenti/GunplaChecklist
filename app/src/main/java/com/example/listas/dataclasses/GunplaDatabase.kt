@@ -1,6 +1,4 @@
-package com.example.listas
-
-import com.google.gson.Gson
+package com.example.listas.dataclasses
 
 class GunplaDatabase {
     val DataFormat: String = ""

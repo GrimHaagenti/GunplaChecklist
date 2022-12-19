@@ -1,4 +1,4 @@
-package com.example.listas
+package com.example.listas.dataclasses
 import com.google.gson.annotations.SerializedName
 
 data class gunplaItem (

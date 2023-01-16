@@ -11,7 +11,7 @@ data class gunplaItem (
     val Grade: String,
     val Series: String,
     val Date: String,
-    val boxArtUrl: String
+    val BoxArt: String
     )
 {
 

@@ -25,7 +25,7 @@ class GunplaListFragment(val suppManager: FragmentManager, val gunplaList: List<
 
         binding = FragmentGunplaListBinding.inflate(inflater)
         binding.gunplaRecyclerView.layoutManager = manager
-        binding.gunplaRecyclerView.adapter = GunplaRecyclerViewAdapter(gunplaList, parent)
+        binding.gunplaRecyclerView.adapter = GunplaRecyclerViewAdapter(requireContext(), gunplaList, parent)
 
         return binding.root
     }

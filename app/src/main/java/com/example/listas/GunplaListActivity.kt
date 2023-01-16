@@ -32,9 +32,7 @@ class GunplaListActivity : AppCompatActivity() {
 
         var gunplaDatabase: GunplaDatabase = ReadJson()
 
-        var gunplaList = listOf<gunplaItem>()
-
-        gunplaList = gunplaDatabase.GunplaDatabase
+        var gunplaList = gunplaDatabase.GunplaDatabase
 
         mainScreenFragment = MainScreenFragment()
         mainMenuFragment = MainMenuFragment(supportFragmentManager)

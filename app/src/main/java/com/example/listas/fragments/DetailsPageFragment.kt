@@ -6,9 +6,11 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentManager
+import com.example.listas.GunplaListActivity
 import com.example.listas.databinding.FragmentDetailsPageBinding
+import com.example.listas.dataclasses.gunplaItem
 
-class DetailsPageFragment(val suppManager:FragmentManager):Fragment() {
+class DetailsPageFragment(val suppManager:FragmentManager, val gunpla: gunplaItem, val parent:GunplaListActivity ):Fragment() {
 
     private lateinit var binding: FragmentDetailsPageBinding
 
@@ -17,10 +19,10 @@ class DetailsPageFragment(val suppManager:FragmentManager):Fragment() {
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-
-        binding.goBackButton.setOnClickListener { hideDetails()}
-        binding = FragmentDetailsPageBinding.inflate(inflater)
-        return binding.root
+            binding = FragmentDetailsPageBinding.inflate(inflater)
+            changeDetails(gunpla.FullName)
+            binding.goBackButton.setOnClickListener { hideDetails()}
+            return binding.root
     }
 
      fun changeDetails(fullName: String){
@@ -28,10 +30,8 @@ class DetailsPageFragment(val suppManager:FragmentManager):Fragment() {
     }
 
     fun hideDetails(){
-        suppManager.beginTransaction().apply {
-            this.hide(this@DetailsPageFragment)
-            commit()
+        parent.ReturnToLastFragment();
         }
-    }
+
 
 }

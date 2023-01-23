@@ -11,10 +11,13 @@ import com.example.listas.fragments.GunplaListFragment
 import com.example.listas.fragments.MainMenuFragment
 import com.example.listas.fragments.MainScreenFragment
 import com.google.gson.Gson
+import java.util.*
 
 
 enum class Screens { MAINSCREEN, MENUSCREEN, GUNPLALIST, DETAILSPAGE}
 class GunplaListActivity : AppCompatActivity() {
+
+    val fragmentStack: Stack<Fragment> = Stack()
 
     private lateinit var binding: ActivityMainBinding
 
@@ -22,6 +25,10 @@ class GunplaListActivity : AppCompatActivity() {
     private lateinit var mainMenuFragment: MainMenuFragment
     private lateinit var gunplaListFragment: GunplaListFragment
     private lateinit var detailsPageFragment : DetailsPageFragment
+
+    private lateinit var currentFragment : Fragment
+    var currentScreen : Screens = Screens.MAINSCREEN
+
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -34,12 +41,14 @@ class GunplaListActivity : AppCompatActivity() {
 
         var gunplaList = gunplaDatabase.GunplaDatabase
 
-        mainScreenFragment = MainScreenFragment()
-        mainMenuFragment = MainMenuFragment(supportFragmentManager)
+        mainScreenFragment = MainScreenFragment(supportFragmentManager, this)
+        mainMenuFragment = MainMenuFragment(supportFragmentManager, this)
         gunplaListFragment = GunplaListFragment(supportFragmentManager, gunplaList, this)
-        detailsPageFragment = DetailsPageFragment(supportFragmentManager)
 
-        setFragment(gunplaListFragment)
+
+        currentFragment = gunplaListFragment
+
+        SetFragment(currentFragment)
         //hideFragment(detailsPageFragment)
 
 
@@ -48,10 +57,29 @@ class GunplaListActivity : AppCompatActivity() {
 
     }
 
+    fun GoForward()
+    {
+        when(currentScreen)
+        {
+            Screens.MAINSCREEN -> TODO()
+            Screens.MENUSCREEN -> TODO()
+            Screens.GUNPLALIST -> TODO()
+            Screens.DETAILSPAGE -> TODO()
+        }
+
+    }
+
+    fun ChangeToDetailsPageFragment(item: gunplaItem)
+    {
+            detailsPageFragment = DetailsPageFragment(supportFragmentManager,item, this)
+            SetFragment(detailsPageFragment)
+    }
+
+
     fun getBinding(): ActivityMainBinding{
         return binding
     }
-    public fun getFragment( name: Screens): Fragment? {
+    fun getFragment( name: Screens): Fragment {
         return when (name){
             Screens.MAINSCREEN -> mainScreenFragment
             Screens.MENUSCREEN -> mainMenuFragment
@@ -60,18 +88,39 @@ class GunplaListActivity : AppCompatActivity() {
         }
     }
 
-    fun setFragment(fragment: Fragment){
+    public fun getCurrentFragment(): Fragment {
+        return currentFragment
+    }
+
+    fun SetFragment(fragment: Fragment){
+
+        fragmentStack.push(currentFragment)
+        currentFragment = fragment
+
         supportFragmentManager.beginTransaction().apply {
-            replace(binding.fragmentContainer.id, fragment)
+            replace(binding.fragmentContainer.id, currentFragment)
             commit()
         }
     }
 
-    fun hideFragment(fragment: Fragment){
+
+    fun ReturnToLastFragment()
+    {
+        try {
+            val lastFragment = fragmentStack.pop()
+            SetFragment(lastFragment)
+        }
+        catch (e: Exception) {
+            /// Something to say can't go back
+        }
+
+    }
+    fun HideFragment(fragment: Fragment){
         supportFragmentManager.beginTransaction().apply {
             this.hide(fragment)
             commit()
         }
+
     }
     fun ReadJson (): GunplaDatabase {
         val fileContent = getResourceAsText()

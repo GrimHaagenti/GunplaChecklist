@@ -11,7 +11,7 @@
 			"Grade":"HG",
 			"Series":"The Witch from Mercury",
 			"Date":"08.2022",
-			"BoxArt":"http://www.dalong.net/reviews/hg/wmh01/p/wmh01.jpg"
+			"BoxArtURL":"http://www.dalong.net/reviews/hg/wmh01/p/wmh01.jpg"
 		},
 		{
 			"_id":1,
@@ -22,7 +22,7 @@
 			"Grade":"MG",
 			"Series":"Iron-Blooded Orphans",
 			"Date":"12.2019",
-			"BoxArt":"http://www.dalong.net/reviews/mg/m212/p/m212.jpg"
+			"BoxArtURL":"http://www.dalong.net/reviews/mg/m212/p/m212.jpg"
 		},
 		{
 			"_id":2,
@@ -33,7 +33,7 @@
 			"Grade":"HG",
 			"Series":"Char's Counterattack - Beltorchika's Children",
 			"Date":"7.2021",
-			"BoxArt":"http://www.dalong.net/reviews/hg/h240/p/h240.jpg"
+			"BoxArtURL":"http://www.dalong.net/reviews/hg/h240/p/h240.jpg"
 		},
 		{
 			"_id":3,
@@ -44,7 +44,7 @@
 			"Grade":"RG",
 			"Series":"Char's Counterattack - Beltorchika's Children",
 			"Date":"9.2021",
-			"BoxArt":"http://www.dalong.net/reviews/rg/rg36/p/rg36.jpg"
+			"BoxArtURL":"http://www.dalong.net/reviews/rg/rg36/p/rg36.jpg"
 		},
 		{
 			"_id":4,
@@ -55,7 +55,7 @@
 			"Grade":"PG",
 			"Series":"Gundam 00",
 			"Date":"12.2017",
-			"BoxArt":"http://www.dalong.net/reviews/pg/p16/th/s_p16L.jpg"
+			"BoxArtURL":"http://www.dalong.net/reviews/pg/p16/th/s_p16L.jpg"
 		}
 	]
 }

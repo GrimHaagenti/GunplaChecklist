@@ -42,12 +42,11 @@ class GunplaRecyclerViewAdapter(
         val element = gunplas[position]
         // println(element.BoxArt)
         //println(element.FullName)
-        holder.name.text = element.Name
-        getBoxArt(element.BoxArt, holder.img)
+        holder.name.text = element.FullName
+        getBoxArt(element.BoxArtURL, holder.img)
         holder.root.setOnClickListener {
-            /*parent.getFragment().changeDetails(element.FullName)
-            setFragment( parent.getFragment())
-            */
+            parent.ChangeToDetailsPageFragment(element)
+
         }
 
 
@@ -56,13 +55,14 @@ class GunplaRecyclerViewAdapter(
     fun getBoxArt(url: String, imageView: ImageView?) {
 //        Picasso.with(parent).load(url).resize(95, 95).into(imageView)
         //Picasso.Builder(parent).build().load(url).resize(95, 95).into(imageView)
-        val pic =Picasso.Builder(parent).build()
+
+/*val pic =Picasso.Builder(parent).build()
             pic.setLoggingEnabled(true)
         pic.load(url).resize(95, 95)
             .onlyScaleDown()
             .centerCrop().
             into(imageView)
-
+*/
     }
 
     fun setParent(par: GunplaListActivity) {

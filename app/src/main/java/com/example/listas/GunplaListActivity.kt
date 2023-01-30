@@ -5,7 +5,7 @@ import android.os.Bundle
 import androidx.fragment.app.Fragment
 import com.example.listas.databinding.ActivityMainBinding
 import com.example.listas.dataclasses.GunplaDatabase
-import com.example.listas.dataclasses.gunplaItem
+import com.example.listas.dataclasses.GunplaItem
 import com.example.listas.fragments.DetailsPageFragment
 import com.example.listas.fragments.GunplaListFragment
 import com.example.listas.fragments.MainMenuFragment
@@ -39,7 +39,7 @@ class GunplaListActivity : AppCompatActivity() {
 
         var gunplaDatabase: GunplaDatabase = ReadJson()
 
-        var gunplaList = gunplaDatabase.GunplaDatabase
+        var gunplaList = gunplaDatabase.gunplaDatabase
 
         mainScreenFragment = MainScreenFragment(supportFragmentManager, this)
         mainMenuFragment = MainMenuFragment(supportFragmentManager, this)
@@ -69,7 +69,7 @@ class GunplaListActivity : AppCompatActivity() {
 
     }
 
-    fun ChangeToDetailsPageFragment(item: gunplaItem)
+    fun ChangeToDetailsPageFragment(item: GunplaItem)
     {
             detailsPageFragment = DetailsPageFragment(supportFragmentManager,item, this)
             SetFragment(detailsPageFragment)

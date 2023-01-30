@@ -10,9 +10,9 @@ import androidx.recyclerview.widget.GridLayoutManager
 import com.example.listas.GunplaListActivity
 import com.example.listas.GunplaRecyclerViewAdapter
 import com.example.listas.databinding.FragmentGunplaListBinding
-import com.example.listas.dataclasses.gunplaItem
+import com.example.listas.dataclasses.GunplaItem
 
-class GunplaListFragment(val suppManager: FragmentManager, val gunplaList: List<gunplaItem>, val parent: GunplaListActivity): Fragment() {
+class GunplaListFragment(val suppManager: FragmentManager, val gunplaList: List<GunplaItem>, val parent: GunplaListActivity): Fragment() {
 
     private lateinit var binding : FragmentGunplaListBinding
 
@@ -26,7 +26,7 @@ class GunplaListFragment(val suppManager: FragmentManager, val gunplaList: List<
         binding = FragmentGunplaListBinding.inflate(inflater)
         binding.gunplaRecyclerView.layoutManager = manager
         binding.gunplaRecyclerView.adapter = GunplaRecyclerViewAdapter(requireContext(), gunplaList, parent)
-        //sdfaa
+
         return binding.root
     }
 

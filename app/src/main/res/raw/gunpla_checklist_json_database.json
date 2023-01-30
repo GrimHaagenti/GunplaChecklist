@@ -1,7 +1,7 @@
 {
 	"DataFormat":"GUNPLA_CHECKLIST",
 	"FormatVersion":0.1,
-	"GunplaDatabase":[
+	"gunplaDatabase":[
 		{
 			"_id":0,
 			"FullName":"XGF-02 Gundam Lfrith",

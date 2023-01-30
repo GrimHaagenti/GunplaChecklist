@@ -3,7 +3,7 @@ import android.graphics.Bitmap
 import com.google.gson.annotations.SerializedName
 import com.squareup.picasso.Picasso
 
-data class gunplaItem (
+data class GunplaItem (
     val _id: Int,
 
     val FullName: String,
@@ -16,20 +16,6 @@ data class gunplaItem (
     val BoxArtURL: String
     )
 {
-
-    private lateinit var BoxArt : Bitmap
-
-    init {
-        val pic = Picasso.get()
-        pic.setLoggingEnabled(true)
-        BoxArt= pic.load(BoxArtURL).get()
-
-    }
-
-
-
-
-
 
 
 

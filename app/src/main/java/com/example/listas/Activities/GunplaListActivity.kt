@@ -31,6 +31,6 @@ class GunplaListActivity(val suppManager: FragmentManager, val gunplaList: List<
         setContentView(binding.root)
     }
 
-   
+
 
 }

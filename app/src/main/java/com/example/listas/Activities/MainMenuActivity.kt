@@ -1,5 +1,6 @@
 package com.example.listas.Activities
 
+import android.content.Intent
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
@@ -11,7 +12,7 @@ import com.example.listas.GunplaListActivity
 import com.example.listas.R
 import com.example.listas.databinding.ActivityMainMenuBinding
 
-class MainMenuActivity(val suppManager: FragmentManager, val parent: GunplaListActivity): AppCompatActivity() {
+class MainMenuActivity: AppCompatActivity() {
 
     private lateinit var binding: ActivityMainMenuBinding
 
@@ -19,7 +20,14 @@ class MainMenuActivity(val suppManager: FragmentManager, val parent: GunplaListA
         super.onCreate(savedInstanceState)
 
         binding = ActivityMainMenuBinding.inflate(layoutInflater)
+
+        binding.searchKitsButton.setOnClickListener {
+            val intent = Intent(this, GunplaListActivity::class.java)
+            startActivity(intent)
+        }
         setContentView(binding.root)
+
     }
+
 
 }

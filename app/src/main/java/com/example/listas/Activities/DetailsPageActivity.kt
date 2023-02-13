@@ -12,14 +12,14 @@ import com.example.listas.R
 import com.example.listas.databinding.ActivityDetailsPageBinding
 import com.example.listas.dataclasses.GunplaItem
 
-class DetailsPageActivity(val suppManager:FragmentManager, val gunpla: GunplaItem, val parent: GunplaListActivity): AppCompatActivity() {
+class DetailsPageActivity: AppCompatActivity() {
 
     private lateinit var binding: ActivityDetailsPageBinding
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivityDetailsPageBinding.inflate(layoutInflater)
-        changeDetails(gunpla.FullName)
+        //changeDetails(gunpla.FullName)
         binding.goBackButton.setOnClickListener { hideDetails()}
 
         setContentView(binding.root)
@@ -31,7 +31,7 @@ class DetailsPageActivity(val suppManager:FragmentManager, val gunpla: GunplaIte
     }
 
     fun hideDetails(){
-        parent.ReturnToLastFragment();
+        //parent.ReturnToLastFragment();
         }
 
 

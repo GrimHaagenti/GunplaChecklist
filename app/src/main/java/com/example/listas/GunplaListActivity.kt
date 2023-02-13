@@ -37,18 +37,11 @@ class GunplaListActivity : AppCompatActivity() {
 
         //setContentView(binding.root)
 
-        var gunplaDatabase: GunplaDatabase = ReadJson()
-
-        var gunplaList = gunplaDatabase.gunplaDatabase
-
-        mainScreenActivity = MainScreenActivity(supportFragmentManager, this)
-        mainMenuActivity = MainMenuActivity(supportFragmentManager, this)
-        gunplaListActivity = GunplaListActivity(supportFragmentManager, gunplaList, this)
 
 
         //currentFragment = gunplaListActivity
 
-        SetFragment(currentFragment)
+        //SetFragment(currentFragment)
         //hideFragment(detailsPageFragment)
 
 
@@ -71,8 +64,8 @@ class GunplaListActivity : AppCompatActivity() {
 
     fun ChangeToDetailsPageFragment(item: GunplaItem)
     {
-            detailsPageFragment = DetailsPageActivity(supportFragmentManager,item, this)
-            SetFragment(detailsPageFragment)
+            //detailsPageFragment = DetailsPageActivity(supportFragmentManager,item, this)
+            //SetFragment(detailsPageFragment)
     }
 
 
@@ -120,22 +113,6 @@ class GunplaListActivity : AppCompatActivity() {
         }
 
     }
-    fun ReadJson (): GunplaDatabase {
-        val fileContent = getResourceAsText()
-        println(fileContent)
-        val gson = Gson()
-        return gson.fromJson(fileContent, GunplaDatabase::class.java)
-    }
 
-
-    fun getResourceAsText(): String {
-        val jsonData = applicationContext.resources.openRawResource(
-            applicationContext.resources.getIdentifier(
-            "gunpla_checklist_json_database",
-            "raw", applicationContext.packageName
-            )
-        ).bufferedReader().use { it.readText() }
-        return jsonData
-    }
 
 }

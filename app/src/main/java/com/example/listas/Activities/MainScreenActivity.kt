@@ -1,5 +1,6 @@
 package com.example.listas.Activities
 
+import android.content.Intent
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
@@ -11,7 +12,7 @@ import com.example.listas.GunplaListActivity
 import com.example.listas.R
 import com.example.listas.databinding.ActivityMainScreenBinding
 
-class MainScreenActivity(val suppManager: FragmentManager, val parent: GunplaListActivity): AppCompatActivity() {
+class MainScreenActivity: AppCompatActivity() {
 
     private lateinit var binding : ActivityMainScreenBinding
 
@@ -22,7 +23,8 @@ class MainScreenActivity(val suppManager: FragmentManager, val parent: GunplaLis
 
         binding = ActivityMainScreenBinding.inflate(layoutInflater)
         binding.enterAppButton.setOnClickListener{
-            //parent.SetFragment(nextFragment)
+            val intent = Intent(this, MainMenuActivity::class.java)
+            startActivity(intent)
         }
 
         setContentView(binding.root)

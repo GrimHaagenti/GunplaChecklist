@@ -12,10 +12,9 @@ import com.example.listas.dataclasses.GunplaItem
 import com.squareup.picasso.Picasso
 
 
-class GunplaRecyclerViewAdapter(
+class GunplaRecyclerViewAdapter (
     val context: Context,
     val gunplas: List<GunplaItem>,
-    val parent: GunplaListActivity
 ) :
     RecyclerView.Adapter<GunplaRecyclerViewAdapter.GunplaVH>() {
 
@@ -40,14 +39,10 @@ class GunplaRecyclerViewAdapter(
 
     override fun onBindViewHolder(holder: GunplaVH, position: Int) {
         val element = gunplas[position]
-        // println(element.BoxArt)
-        //println(element.FullName)
+        //println(element.BoxArt)
+        println(element.FullName)
         holder.name.text = element.FullName
         getBoxArt(element.BoxArtURL, holder.img)
-        holder.root.setOnClickListener {
-            parent.ChangeToDetailsPageFragment(element)
-
-        }
 
 
     }
@@ -56,7 +51,7 @@ class GunplaRecyclerViewAdapter(
 //        Picasso.with(parent).load(url).resize(95, 95).into(imageView)
         //Picasso.Builder(parent).build().load(url).resize(95, 95).into(imageView)
 
-        val pic = Picasso.Builder(parent).build()
+        val pic = Picasso.Builder(context).build()
             pic.setLoggingEnabled(true)
         pic.load(url).resize(95, 95)
             .onlyScaleDown()
@@ -65,15 +60,13 @@ class GunplaRecyclerViewAdapter(
 
     }
 
-    fun setParent(par: GunplaListActivity) {
-        parent
-    }
+
 
     override fun getItemCount(): Int {
         return gunplas.size
     }
 
-    fun setFragment(fragment: Fragment) {
+    /*fun setFragment(fragment: Fragment) {
         parent.supportFragmentManager.beginTransaction().apply {
             replace(parent.getBinding().fragmentContainer.id, fragment)
             commit()
@@ -85,7 +78,7 @@ class GunplaRecyclerViewAdapter(
             this.hide(fragment)
             commit()
         }
-    }
+    }*/
 
 
 }

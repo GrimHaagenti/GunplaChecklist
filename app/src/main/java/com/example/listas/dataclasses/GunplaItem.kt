@@ -1,19 +1,34 @@
 package com.example.listas.dataclasses
-import android.graphics.Bitmap
-import com.google.gson.annotations.SerializedName
-import com.squareup.picasso.Picasso
+import com.google.firebase.database.PropertyName
 
 data class GunplaItem (
-    val _id: Int,
 
-    val FullName: String,
-    val MsModelNumber: String,
-    val Name: String,
-    val Scale: String,
-    val Grade: String,
-    val Series: String,
-    val Date: String,
-    val BoxArtURL: String
+    @get:PropertyName("_id")
+    @set:PropertyName("_id") var id: Int = -1,
+
+    @PropertyName("FullName")
+    var fullName: String = "",
+
+    @PropertyName("MsModelNumber")
+    var msModelNumber: String = "",
+
+    @PropertyName("Name")
+    var name: String = "",
+
+    @PropertyName("Scale")
+    var scale: String = "",
+
+    @PropertyName("Grade")
+    var grade: String = "",
+
+    @PropertyName("Series")
+    var series: String = "",
+
+    @PropertyName("Date")
+    var date: String = "",
+
+    @PropertyName("BoxArtURL")
+    var boxArtURL: String = ""
     )
 {
 

@@ -1,9 +1,16 @@
 package com.example.listas.dataclasses
 
-class GunplaDatabase {
-    val DataFormat: String = ""
-    val FormatVersion: Double = 0.0
-    val gunplaDatabase: List<GunplaItem> = listOf()
+import com.google.firebase.database.PropertyName
 
+data class GunplaDatabase (
+    @get:PropertyName("DataFormat")
+    @set:PropertyName("DataFormat") var DataFormat: String = "",
+
+    @PropertyName("FormatVersion")
+    var FormatVersion: Double = 0.0,
+
+    @PropertyName("gunplaDatabase")
+    var gunplaDatabase: List<GunplaItem> = listOf()
+){
 
 }

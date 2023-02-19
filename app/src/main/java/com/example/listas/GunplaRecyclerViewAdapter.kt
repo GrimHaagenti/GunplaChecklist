@@ -5,7 +5,6 @@ import android.content.Context
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import android.widget.ImageView
-import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.RecyclerView
 import com.example.listas.databinding.ItemGunplaBinding
 import com.example.listas.dataclasses.GunplaItem
@@ -40,19 +39,20 @@ class GunplaRecyclerViewAdapter (
     override fun onBindViewHolder(holder: GunplaVH, position: Int) {
         val element = gunplas[position]
         //println(element.BoxArt)
-        println(element.FullName)
-        holder.name.text = element.FullName
-        getBoxArt(element.BoxArtURL, holder.img)
+        println(element.fullName)
+        holder.name.text = element.fullName
+        getBoxArt(element.boxArtURL, holder.img)
 
 
     }
+
 
     fun getBoxArt(url: String, imageView: ImageView?) {
 //        Picasso.with(parent).load(url).resize(95, 95).into(imageView)
         //Picasso.Builder(parent).build().load(url).resize(95, 95).into(imageView)
 
         val pic = Picasso.Builder(context).build()
-            pic.setLoggingEnabled(true)
+        pic.setLoggingEnabled(true)
         pic.load(url).resize(95, 95)
             .onlyScaleDown()
             .centerCrop().

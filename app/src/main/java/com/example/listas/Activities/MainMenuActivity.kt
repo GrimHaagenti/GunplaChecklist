@@ -13,7 +13,9 @@ class MainMenuActivity: AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
-        var databaseObject : DatabaseObject = DatabaseObject
+        var databaseObject = DatabaseObject
+
+        println(databaseObject.DB.DataFormat)
 
         binding = ActivityMainMenuBinding.inflate(layoutInflater)
 

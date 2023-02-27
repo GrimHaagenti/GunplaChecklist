@@ -7,8 +7,8 @@
 
     <ImageView
         android:id="@+id/boxArtImage"
-        android:layout_width="95dp"
-        android:layout_height="95dp"
+        android:layout_width="105dp"
+        android:layout_height="105dp"
         android:layout_marginStart="16dp"
         android:adjustViewBounds="false"
         android:cropToPadding="false"
@@ -18,30 +18,34 @@
         app:layout_constraintTop_toTopOf="parent"
         app:srcCompat="@mipmap/wmh01" />
 
-    <ImageView
+    <ImageButton
         android:id="@+id/transparency"
-        android:layout_width="96dp"
+        android:layout_width="0dp"
         android:layout_height="0dp"
-        android:alpha="0.5"
+        android:alpha="0.35"
+        android:hapticFeedbackEnabled="true"
+        android:tint="#FFFFFF"
         app:layout_constraintBottom_toBottomOf="@+id/boxArtImage"
         app:layout_constraintEnd_toEndOf="@+id/boxArtImage"
-        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="@+id/boxArtImage"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="1.0"
-        app:srcCompat="@color/white" />
+        app:layout_constraintTop_toTopOf="@+id/boxArtImage"
+        app:srcCompat="@drawable/solid_square" />
 
     <TextView
         android:id="@+id/name"
-        android:layout_width="wrap_content"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
+        android:layout_marginStart="1dp"
+        android:layout_marginEnd="1dp"
         android:text="Name"
+        android:textAlignment="viewStart"
         android:textColor="#000000"
+        android:textSize="13sp"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="@+id/transparency"
-        app:layout_constraintHorizontal_bias="0.457"
+        app:layout_constraintEnd_toEndOf="@+id/boxArtImage"
+        app:layout_constraintHorizontal_bias="0.02"
         app:layout_constraintStart_toStartOf="@+id/boxArtImage"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.789" />
+        app:layout_constraintVertical_bias="0.84000003" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -12,8 +12,8 @@ import com.google.firebase.ktx.Firebase
 
 object DatabaseObject {
 
-    var DB = GunplaDatabase()
-
+    lateinit var DB: GunplaDatabase
+    var DB_Initialized = false
     private var database: DatabaseReference =
         Firebase.database("https://gunplachecklist-default-rtdb.europe-west1.firebasedatabase.app/")
             .getReference("")
@@ -39,11 +39,8 @@ object DatabaseObject {
                     var item = it.getValue(GunplaItem::class.java)?:return
                     itemList.add(item)
                 }
-                GunplaDatabase(format, version, itemList).also {
-                    println(it)
-                    DB = it
-                }
-
+                DB = GunplaDatabase(format, version, itemList)
+                DB_Initialized = true
             }
 
             override fun onCancelled(error: DatabaseError) {

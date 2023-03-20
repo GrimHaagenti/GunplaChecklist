@@ -9,39 +9,43 @@
         android:id="@+id/enterAppButton"
         android:layout_width="0dp"
         android:layout_height="0dp"
+        android:backgroundTint="#01011E"
         android:contentDescription="Tap to Enter"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:srcCompat="@drawable/ic_transparent" />
+        app:layout_constraintVertical_bias="0.0"
+        app:srcCompat="@drawable/ic_transparent"
+        tools:srcCompat="@drawable/ic_transparent" />
 
-    <TextView
+    <ImageView
         android:id="@+id/MainTitle"
-        android:layout_width="283dp"
-        android:layout_height="143dp"
-        android:text="Gunpla Checklist"
-        android:textAlignment="center"
-        android:textColor="#06C3D5"
-        android:textSize="48sp"
-        android:textStyle="bold"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.172" />
-
-    <TextView
-        android:id="@+id/TapToEnterText"
-        android:layout_width="wrap_content"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:text="Tap To Enter"
-        android:textAlignment="center"
-        android:textSize="34sp"
+        android:layout_marginStart="32dp"
+        android:layout_marginEnd="32dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/enterAppButton"
+        app:layout_constraintVertical_bias="0.204"
+        app:srcCompat="@mipmap/MainTitle" />
+
+    <ImageView
+        android:id="@+id/TapToEnterText"
+        android:layout_width="345dp"
+        android:layout_height="220dp"
+        android:layout_marginStart="32dp"
+        android:layout_marginTop="24dp"
+        android:layout_marginEnd="32dp"
+        android:background="#00FFFFFF"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/MainTitle"
-        app:layout_constraintVertical_bias="0.262" />
+        app:srcCompat="@mipmap/TapToStartButton" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

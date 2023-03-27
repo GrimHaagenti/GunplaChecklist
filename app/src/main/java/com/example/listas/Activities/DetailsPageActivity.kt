@@ -26,7 +26,6 @@ class DetailsPageActivity: AppCompatActivity() {
         binding = ActivityDetailsPageBinding.inflate(layoutInflater)
 
         val gunplaId = intent.extras?.getInt("chosenGunplaId")?: -1
-
         if(gunplaId < 0) {Toast.makeText(this, "ERROR", Toast.LENGTH_SHORT)}
         else {changeDetails(gunplaId)}
 
@@ -34,12 +33,8 @@ class DetailsPageActivity: AppCompatActivity() {
             val intent = Intent(this, GunplaListActivity::class.java)
             startActivity(intent)
         }
-
         setContentView(binding.root)
     }
-
-
-
     fun changeDetails(id: Int){
          binding.fullName.text = databaseObject.DB.gunplaDatabase[id].fullName
         getBoxArt( databaseObject.DB.gunplaDatabase[id].boxArtURL,binding.boxArt)

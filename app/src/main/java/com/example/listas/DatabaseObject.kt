@@ -1,5 +1,4 @@
 package com.example.listas
-
 import com.example.listas.dataclasses.GunplaDatabase
 import com.example.listas.dataclasses.GunplaItem
 import com.google.firebase.database.DataSnapshot
@@ -13,22 +12,17 @@ import com.google.firebase.ktx.Firebase
 object DatabaseObject {
 
     lateinit var DB: GunplaDatabase
+
     var DB_Initialized = false
     private var database: DatabaseReference =
         Firebase.database("https://gunplachecklist-default-rtdb.europe-west1.firebasedatabase.app/")
             .getReference("")
 
-
-
     fun PrintDataDebugGunpla(){
         getDatabaseInfo()
-
-
     }
 
     fun getDatabaseInfo() {
-
-
 
         database.addValueEventListener(object : ValueEventListener {
             override fun onDataChange(snapshot: DataSnapshot) {

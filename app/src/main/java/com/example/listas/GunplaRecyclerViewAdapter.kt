@@ -38,9 +38,7 @@ class GunplaRecyclerViewAdapter (
     }
 
     override fun onBindViewHolder(holder: GunplaVH, position: Int) {
-
         val element = gunplas[position]
-
         holder.name.text = element.fullName
         getBoxArt(element.boxArtURL, holder.img)
 
@@ -55,21 +53,14 @@ class GunplaRecyclerViewAdapter (
             dialog.show()
             true
         }
-
     }
-
-
     fun getBoxArt(url: String, imageView: ImageView?) {
-//        Picasso.with(parent).load(url).resize(95, 95).into(imageView)
-        //Picasso.Builder(parent).build().load(url).resize(95, 95).into(imageView)
-
         val pic = Picasso.Builder(parent).build()
         pic.setLoggingEnabled(true)
         pic.load(url).resize(95, 95)
             .onlyScaleDown()
             .centerCrop().
             into(imageView)
-
     }
 
 

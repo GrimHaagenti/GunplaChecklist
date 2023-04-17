@@ -19,7 +19,7 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.285"
-        app:srcCompat="@mipmap/ModelKitButton" />
+        app:srcCompat="@mipmap/model_kit_button" />
 
     <ImageButton
         android:id="@+id/myListsButton"
@@ -35,6 +35,6 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.62"
-        app:srcCompat="@mipmap/ListsButton" />
+        app:srcCompat="@mipmap/lists_button" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

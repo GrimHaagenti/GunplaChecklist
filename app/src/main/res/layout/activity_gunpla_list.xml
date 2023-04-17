@@ -5,63 +5,123 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
-    <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/gunplaRecyclerView"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.498"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.119" />
-
     <ImageView
-        android:id="@+id/BG"
+        android:id="@+id/bg"
         android:layout_width="0dp"
-        android:layout_height="667dp"
-        android:layout_marginStart="8dp"
-        android:layout_marginEnd="8dp"
-        android:layout_marginBottom="32dp"
-        android:scaleType="fitCenter"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.0"
-        app:srcCompat="@mipmap/BG" />
-
-    <ImageButton
-        android:id="@+id/goBackButtonList"
-        android:layout_width="72dp"
-        android:layout_height="45dp"
-        android:layout_marginTop="16dp"
-        android:background="#00FFFFFF"
-        android:scaleType="fitCenter"
-        app:layout_constraintBottom_toBottomOf="@+id/BG"
-        app:layout_constraintEnd_toEndOf="@+id/BG"
-        app:layout_constraintHorizontal_bias="0.049"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="@+id/BG"
-        app:layout_constraintVertical_bias="0.02"
-        app:srcCompat="@mipmap/GoBackButtonTop" />
-
-    <ImageView
-        android:id="@+id/imageView4"
-        android:layout_width="0dp"
-        android:layout_height="556dp"
+        android:layout_height="0dp"
         android:layout_marginStart="16dp"
+        android:layout_marginTop="16dp"
         android:layout_marginEnd="16dp"
-        android:layout_marginBottom="8dp"
-        android:background="#00FFFFFF"
-        android:scaleType="fitCenter"
+        android:layout_marginBottom="82dp"
+        android:scaleType="fitXY"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="@+id/BG"
-        app:layout_constraintVertical_bias="0.496"
-        app:srcCompat="@mipmap/InnerContainer" />
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.0"
+        app:srcCompat="@mipmap/main_bg" />
+
+    <ImageButton
+        android:id="@+id/goBackButtonList"
+        android:layout_width="60dp"
+        android:layout_height="45dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="8dp"
+        android:background="#00FFFFFF"
+        android:scaleType="fitCenter"
+        app:layout_constraintBottom_toBottomOf="@+id/bg"
+        app:layout_constraintEnd_toEndOf="@+id/bg"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="@+id/bg"
+        app:layout_constraintTop_toTopOf="@+id/bg"
+        app:layout_constraintVertical_bias="0.0"
+        app:srcCompat="@mipmap/go_back_button_top" />
+
+    <ImageView
+        android:id="@+id/innerContainer"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginEnd="16dp"
+        android:layout_marginBottom="16dp"
+        android:background="#00FFFFFF"
+        android:scaleType="fitXY"
+        app:layout_constraintBottom_toBottomOf="@+id/bg"
+        app:layout_constraintEnd_toEndOf="@+id/bg"
+        app:layout_constraintStart_toStartOf="@+id/bg"
+        app:layout_constraintTop_toBottomOf="@+id/goBackButtonList"
+        app:srcCompat="@mipmap/inner_container" />
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/gunplaRecyclerView"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="16dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginBottom="8dp"
+        app:layout_constraintBottom_toBottomOf="@+id/innerContainer"
+        app:layout_constraintEnd_toEndOf="@+id/innerContainer"
+        app:layout_constraintHorizontal_bias="0.492"
+        app:layout_constraintStart_toStartOf="@+id/innerContainer"
+        app:layout_constraintTop_toTopOf="@+id/innerContainer"
+        app:layout_constraintVertical_bias="0.145" />
+
+    <ImageButton
+        android:id="@+id/iconListButton"
+        android:layout_width="120dp"
+        android:layout_height="70dp"
+        android:background="#FFFFFF"
+        android:scaleType="fitCenter"
+        android:scaleX="1"
+        android:scaleY="1"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.498"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/bg"
+        app:srcCompat="@mipmap/current_icon_container"
+        tools:srcCompat="@mipmap/current_icon_container" />
+
+    <ImageButton
+        android:id="@+id/goBackListButton"
+        android:layout_width="120dp"
+        android:layout_height="70dp"
+        android:background="#FFFFFF"
+        android:scaleType="fitCenter"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toStartOf="@+id/iconListButton"
+        app:layout_constraintHorizontal_bias="0.615"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/bg"
+        app:srcCompat="@mipmap/back_list_button" />
+
+    <ImageButton
+        android:id="@+id/goForwardListButton"
+        android:layout_width="120dp"
+        android:layout_height="70dp"
+        android:background="#FFFFFF"
+        android:scaleType="fitCenter"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/iconListButton"
+        app:layout_constraintTop_toBottomOf="@+id/bg"
+        app:srcCompat="@mipmap/advance_list_button" />
+
+    <ImageView
+        android:id="@+id/currentListIcon"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="16dp"
+        android:layout_marginEnd="16dp"
+        android:layout_marginBottom="16dp"
+        app:layout_constraintBottom_toBottomOf="@+id/iconListButton"
+        app:layout_constraintEnd_toEndOf="@+id/iconListButton"
+        app:layout_constraintStart_toStartOf="@+id/iconListButton"
+        app:layout_constraintTop_toTopOf="@+id/iconListButton"
+        app:srcCompat="@drawable/ic_baseline_architecture_24" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

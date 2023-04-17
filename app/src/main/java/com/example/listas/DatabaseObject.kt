@@ -1,25 +1,32 @@
 package com.example.listas
 import com.example.listas.dataclasses.GunplaDatabase
 import com.example.listas.dataclasses.GunplaItem
+import com.example.listas.dataclasses.UserLists
+import com.example.listas.dataclasses.UserListsEnum
 import com.google.firebase.database.DataSnapshot
 import com.google.firebase.database.DatabaseError
 import com.google.firebase.database.DatabaseReference
 import com.google.firebase.database.ValueEventListener
 import com.google.firebase.database.ktx.database
-import com.google.firebase.database.ktx.getValue
 import com.google.firebase.ktx.Firebase
+
+
 
 object DatabaseObject {
 
     lateinit var DB: GunplaDatabase
+
+    lateinit var userListsDatabase: UserLists
 
     var DB_Initialized = false
     private var database: DatabaseReference =
         Firebase.database("https://gunplachecklist-default-rtdb.europe-west1.firebasedatabase.app/")
             .getReference("")
 
-    fun PrintDataDebugGunpla(){
+    fun InitDatabases(){
         getDatabaseInfo()
+        initUserLists()
+
     }
 
     fun getDatabaseInfo() {
@@ -41,12 +48,89 @@ object DatabaseObject {
                 println("ERROOOOOOR: " + error.message)
             }
         })
+    }
+
+    fun getLists(): UserLists{
+
+        //try gettin a Json object and parse it
+        var u = UserLists()
+
+        return u
+    }
+
+    fun initUserLists(){
+
+        //Try getting the user lists
+        userListsDatabase = getLists();
 
 
     }
 
 
+    fun manageClickOnItem(listName: UserListsEnum, gunplaId: Int)
+    {
+        when (listName){
+            UserListsEnum.WANTED -> {
+                if(userListsDatabase.wanted.contains(gunplaId))
+                {
+                    userListsDatabase.wanted.remove(gunplaId)
+                }
+                else{
+                    userListsDatabase.wanted.add(gunplaId)
+                }
 
+            }
+            UserListsEnum.BACKLOG -> {
+                if(userListsDatabase.backlog.contains(gunplaId))
+                {
+                    userListsDatabase.backlog.remove(gunplaId)
+                }
+                else{
+                    userListsDatabase.backlog.add(gunplaId)
+                }
+            }
+            UserListsEnum.STARTED -> {
+                if(userListsDatabase.started.contains(gunplaId))
+                {
+                    userListsDatabase.started.remove(gunplaId)
+                }
+                else{
+                    userListsDatabase.started.add(gunplaId)
+                }
+            }
+            UserListsEnum.ASSEMBLED -> {
+                if(userListsDatabase.assembled.contains(gunplaId))
+                {
+                    userListsDatabase.assembled.remove(gunplaId)
+                }
+                else{
+                    userListsDatabase.assembled.add(gunplaId)
+                }
+            }
+            UserListsEnum.CUSTOM -> {
+                //userListsDatabase.customizing.add(gunplaId);
+            }
+            UserListsEnum.FINISHED -> {
+                if(userListsDatabase.finished.contains(gunplaId))
+                {
+                    userListsDatabase.finished.remove(gunplaId)
+                }
+                else{
+                    userListsDatabase.finished.add(gunplaId)
+                }
+            }
+            UserListsEnum.DISPLAY -> {
+                if(userListsDatabase.onDisplay.contains(gunplaId))
+                {
+                    userListsDatabase.onDisplay.remove(gunplaId)
+                }
+                else{
+                    userListsDatabase.onDisplay.add(gunplaId)
+                }
+            }
+        }
+
+    }
 
     //var gunplaList = gunplaDatabase.gunplaDatabase
 

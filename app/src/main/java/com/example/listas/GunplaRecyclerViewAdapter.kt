@@ -42,16 +42,16 @@ class GunplaRecyclerViewAdapter (
         holder.name.text = element.fullName
         getBoxArt(element.boxArtURL, holder.img)
 
-        holder.button.setOnClickListener {
+        holder.button.setOnLongClickListener {
             parent.detailActivityStart(position)
+            true
         }
-        holder.button.setOnLongClickListener{
+        holder.button.setOnClickListener{
             val dialog = AlertDialog.Builder(parent)
             dialog.setTitle("Add to List")
             dialog.setMessage(" Aun no tengo las listas")
             dialog.setNegativeButton("Cancel") { _: DialogInterface, i: Int -> }
             dialog.show()
-            true
         }
     }
     fun getBoxArt(url: String, imageView: ImageView?) {

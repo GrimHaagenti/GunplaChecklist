@@ -2,12 +2,12 @@ package com.example.listas.dataclasses
 
 import com.google.gson.annotations.SerializedName
 
-data class ListItem(
+data class CustomListItem(
 
     @SerializedName("name")
     var name : String = "",
 
     @SerializedName("mainList")
-    var mainList : List<GunplaItem> = listOf()
+    var idList : List<Int> = listOf()
 
 )

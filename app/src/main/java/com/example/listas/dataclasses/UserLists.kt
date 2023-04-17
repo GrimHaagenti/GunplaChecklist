@@ -1,25 +1,23 @@
 package com.example.listas.dataclasses
 
-import com.google.firebase.database.PropertyName
 import com.google.gson.annotations.SerializedName
-import retrofit2.http.GET
 
 data class UserLists(
 
     @SerializedName("Wanted")
-    var wanted : ListItem,
+    var wanted : ArrayList<Int> = arrayListOf(),
     @SerializedName("Backlog")
-    var backlog : ListItem,
+    var backlog : ArrayList<Int> = arrayListOf(),
     @SerializedName("Started")
-    var started : ListItem,
+    var started : ArrayList<Int> = arrayListOf(),
     @SerializedName("Assambled")
-    var assambled : ListItem,
+    var assembled : ArrayList<Int> = arrayListOf(),
     @SerializedName("Customizing")
-    var customizing : List<ListItem>,
+    var customizing : ArrayList<CustomListItem> = arrayListOf(),
     @SerializedName("Done")
-    var done : ListItem,
+    var finished : ArrayList<Int> = arrayListOf(),
     @SerializedName("OnDisplay")
-    var onDisplay : ListItem,
+    var onDisplay : ArrayList<Int> = arrayListOf()
 
-)
+    )
 

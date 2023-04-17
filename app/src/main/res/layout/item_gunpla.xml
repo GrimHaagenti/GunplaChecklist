@@ -7,9 +7,10 @@
 
     <ImageView
         android:id="@+id/boxArtImage"
-        android:layout_width="105dp"
-        android:layout_height="105dp"
-        android:layout_marginStart="16dp"
+        android:layout_width="95dp"
+        android:layout_height="95dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginBottom="8dp"
         android:adjustViewBounds="false"
         android:cropToPadding="false"
         android:scaleType="centerCrop"
@@ -27,8 +28,10 @@
         android:tint="#FFFFFF"
         app:layout_constraintBottom_toBottomOf="@+id/boxArtImage"
         app:layout_constraintEnd_toEndOf="@+id/boxArtImage"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="@+id/boxArtImage"
         app:layout_constraintTop_toTopOf="@+id/boxArtImage"
+        app:layout_constraintVertical_bias="0.0"
         app:srcCompat="@drawable/solid_square" />
 
     <TextView

@@ -17,7 +17,7 @@ class MainScreenActivity: AppCompatActivity() {
 
         val databaseObject = DatabaseObject
 
-        databaseObject.PrintDataDebugGunpla()
+        databaseObject.InitDatabases()
 
 
 

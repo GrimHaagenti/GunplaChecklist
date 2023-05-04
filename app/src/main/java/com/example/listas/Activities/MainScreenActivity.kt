@@ -6,6 +6,7 @@ import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import com.example.listas.DatabaseObject
 import com.example.listas.databinding.ActivityMainScreenBinding
+import com.google.android.gms.ads.MobileAds
 
 class MainScreenActivity: AppCompatActivity() {
 
@@ -15,6 +16,7 @@ class MainScreenActivity: AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
+        MobileAds.initialize(this)
         val databaseObject = DatabaseObject
 
         databaseObject.InitDatabases()

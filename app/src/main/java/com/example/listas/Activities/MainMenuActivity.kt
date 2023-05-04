@@ -6,6 +6,7 @@ import androidx.appcompat.app.AppCompatActivity
 import com.example.listas.DatabaseObject
 import com.example.listas.databinding.ActivityMainMenuBinding
 import com.example.listas.dataclasses.UserListsEnum
+import com.google.android.gms.ads.AdRequest
 
 class MainMenuActivity: AppCompatActivity() {
 
@@ -19,7 +20,8 @@ class MainMenuActivity: AppCompatActivity() {
         println(databaseObject.DB.DataFormat)
 
         binding = ActivityMainMenuBinding.inflate(layoutInflater)
-
+        val adRequest = AdRequest.Builder().build()
+        binding.adView.loadAd(adRequest)
         databaseObject.currentList = UserListsEnum.WANTED
         binding.searchKitsButton.setOnClickListener {
             val intent = Intent(this, GunplaListActivity::class.java)

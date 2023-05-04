@@ -3,6 +3,8 @@ package com.example.listas
 
 import android.app.AlertDialog
 import android.content.DialogInterface
+import android.content.res.ColorStateList
+import android.graphics.Color
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import android.widget.ImageView
@@ -18,6 +20,13 @@ class GunplaRecyclerViewAdapter (
     val gunplas: List<GunplaItem>,
 ) :
     RecyclerView.Adapter<GunplaRecyclerViewAdapter.GunplaVH>() {
+
+
+
+    val notOnListAlpha=  R.drawable.not_on_list_button
+    val onListAlpha = R.drawable.on_list_button
+
+
 
     inner class GunplaVH(binding: ItemGunplaBinding) :
         RecyclerView.ViewHolder(binding.root) {
@@ -37,23 +46,58 @@ class GunplaRecyclerViewAdapter (
 
     }
 
+    override fun onBindViewHolder(holder: GunplaVH, position: Int, payloads: MutableList<Any>) {
+        if (payloads.isNotEmpty()) {
+            if(payloads[0] is Boolean){
+
+                val onList: Boolean = payloads.get(0) as Boolean
+
+                if (onList) {
+                    holder.button.setBackgroundResource(onListAlpha)
+                }else{
+                    holder.button.setBackgroundResource(notOnListAlpha)
+                }
+            }
+
+        } else {
+            super.onBindViewHolder(holder, position, payloads)
+        }
+    }
+
     override fun onBindViewHolder(holder: GunplaVH, position: Int) {
         val element = gunplas[position]
+
         holder.name.text = element.fullName
         getBoxArt(element.boxArtURL, holder.img)
+
+
 
         holder.button.setOnLongClickListener {
             parent.detailActivityStart(position)
             true
         }
         holder.button.setOnClickListener{
-            val dialog = AlertDialog.Builder(parent)
+
+            parent.manageOnClickItem(position)
+            parent.changeList()
+            /*val dialog = AlertDialog.Builder(parent)
             dialog.setTitle("Add to List")
             dialog.setMessage(" Aun no tengo las listas")
             dialog.setNegativeButton("Cancel") { _: DialogInterface, i: Int -> }
-            dialog.show()
+            dialog.show()*/
         }
+        val idList = parent.gunplalistmodelview.getCurrentIdsOnList()
+
+        if(idList.contains(position)){
+            holder.button.setBackgroundResource(onListAlpha)
+        }else{
+            holder.button.setBackgroundResource(notOnListAlpha)
+        }
+
     }
+
+
+
     fun getBoxArt(url: String, imageView: ImageView?) {
         val pic = Picasso.Builder(parent).build()
         pic.setLoggingEnabled(true)
@@ -68,21 +112,6 @@ class GunplaRecyclerViewAdapter (
     override fun getItemCount(): Int {
         return gunplas.size
     }
-
-    /*fun setFragment(fragment: Fragment) {
-        parent.supportFragmentManager.beginTransaction().apply {
-            replace(parent.getBinding().fragmentContainer.id, fragment)
-            commit()
-        }
-    }
-
-    fun hideFragment(fragment: Fragment) {
-        parent.supportFragmentManager.beginTransaction().apply {
-            this.hide(fragment)
-            commit()
-        }
-    }*/
-
 
 }
 

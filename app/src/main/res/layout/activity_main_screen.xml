@@ -3,14 +3,16 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    android:background="@color/main_blue">
 
     <ImageButton
         android:id="@+id/enterAppButton"
         android:layout_width="0dp"
         android:layout_height="0dp"
-        android:backgroundTint="#01011E"
+        android:backgroundTint="@color/main_blue"
         android:contentDescription="Tap to Enter"
+        android:scaleType="fitXY"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="1.0"
@@ -31,21 +33,21 @@
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="@+id/enterAppButton"
-        app:layout_constraintVertical_bias="0.204"
+        app:layout_constraintVertical_bias="0.37"
         app:srcCompat="@mipmap/main_title" />
 
-    <ImageView
+    <TextView
         android:id="@+id/TapToEnterText"
-        android:layout_width="345dp"
-        android:layout_height="220dp"
-        android:layout_marginStart="32dp"
-        android:layout_marginTop="24dp"
-        android:layout_marginEnd="32dp"
-        android:background="#00FFFFFF"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:fontFamily="@font/iori_family"
+        android:text="@string/mainMenu_tapToStart"
+        android:textColor="@color/white_o"
+        android:textSize="20sp"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/MainTitle"
-        app:srcCompat="@mipmap/tap_to_start_button" />
+        app:layout_constraintVertical_bias="0.26999998" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -3,16 +3,17 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    android:background="@color/main_blue">
 
     <ImageView
-        android:id="@+id/bg"
+        android:id="@+id/gunplaListBg"
         android:layout_width="0dp"
         android:layout_height="0dp"
         android:layout_marginStart="16dp"
-        android:layout_marginTop="16dp"
+        android:layout_marginTop="32dp"
         android:layout_marginEnd="16dp"
-        android:layout_marginBottom="82dp"
+        android:layout_marginBottom="135dp"
         android:scaleType="fitXY"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
@@ -23,23 +24,23 @@
         app:srcCompat="@mipmap/main_bg" />
 
     <ImageButton
-        android:id="@+id/goBackButtonList"
+        android:id="@+id/goBackButtonGunplaList"
         android:layout_width="60dp"
         android:layout_height="45dp"
         android:layout_marginStart="16dp"
         android:layout_marginTop="8dp"
         android:background="#00FFFFFF"
         android:scaleType="fitCenter"
-        app:layout_constraintBottom_toBottomOf="@+id/bg"
-        app:layout_constraintEnd_toEndOf="@+id/bg"
+        app:layout_constraintBottom_toBottomOf="@+id/gunplaListBg"
+        app:layout_constraintEnd_toEndOf="@+id/gunplaListBg"
         app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="@+id/bg"
-        app:layout_constraintTop_toTopOf="@+id/bg"
+        app:layout_constraintStart_toStartOf="@+id/gunplaListBg"
+        app:layout_constraintTop_toTopOf="@+id/gunplaListBg"
         app:layout_constraintVertical_bias="0.0"
         app:srcCompat="@mipmap/go_back_button_top" />
 
     <ImageView
-        android:id="@+id/innerContainer"
+        android:id="@+id/gunplaListInnerContainer"
         android:layout_width="0dp"
         android:layout_height="0dp"
         android:layout_marginStart="16dp"
@@ -48,10 +49,10 @@
         android:layout_marginBottom="16dp"
         android:background="#00FFFFFF"
         android:scaleType="fitXY"
-        app:layout_constraintBottom_toBottomOf="@+id/bg"
-        app:layout_constraintEnd_toEndOf="@+id/bg"
-        app:layout_constraintStart_toStartOf="@+id/bg"
-        app:layout_constraintTop_toBottomOf="@+id/goBackButtonList"
+        app:layout_constraintBottom_toBottomOf="@+id/gunplaListBg"
+        app:layout_constraintEnd_toEndOf="@+id/gunplaListBg"
+        app:layout_constraintStart_toStartOf="@+id/gunplaListBg"
+        app:layout_constraintTop_toBottomOf="@+id/goBackButtonGunplaList"
         app:srcCompat="@mipmap/inner_container" />
 
     <androidx.recyclerview.widget.RecyclerView
@@ -62,18 +63,19 @@
         android:layout_marginTop="16dp"
         android:layout_marginEnd="8dp"
         android:layout_marginBottom="8dp"
-        app:layout_constraintBottom_toBottomOf="@+id/innerContainer"
-        app:layout_constraintEnd_toEndOf="@+id/innerContainer"
+        app:layout_constraintBottom_toBottomOf="@+id/gunplaListInnerContainer"
+        app:layout_constraintEnd_toEndOf="@+id/gunplaListInnerContainer"
         app:layout_constraintHorizontal_bias="0.492"
-        app:layout_constraintStart_toStartOf="@+id/innerContainer"
-        app:layout_constraintTop_toTopOf="@+id/innerContainer"
-        app:layout_constraintVertical_bias="0.145" />
+        app:layout_constraintStart_toStartOf="@+id/gunplaListInnerContainer"
+        app:layout_constraintTop_toTopOf="@+id/gunplaListInnerContainer"
+        app:layout_constraintVertical_bias="0.145"
+        tools:listitem="@layout/item_gunpla" />
 
     <ImageButton
-        android:id="@+id/iconListButton"
-        android:layout_width="120dp"
-        android:layout_height="70dp"
-        android:background="#FFFFFF"
+        android:id="@+id/iconGunplaListButton"
+        android:layout_width="80dp"
+        android:layout_height="80dp"
+        android:background="#00FFFFFF"
         android:scaleType="fitCenter"
         android:scaleX="1"
         android:scaleY="1"
@@ -81,47 +83,64 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.498"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/bg"
-        app:srcCompat="@mipmap/current_icon_container"
-        tools:srcCompat="@mipmap/current_icon_container" />
+        app:layout_constraintTop_toBottomOf="@+id/currentGunplaListName"
+        app:layout_constraintVertical_bias="0.0"
+        app:srcCompat="@drawable/current_list_button"
+        tools:srcCompat="@drawable/current_list_button" />
 
     <ImageButton
-        android:id="@+id/goBackListButton"
+        android:id="@+id/goBackGunplaListButton"
         android:layout_width="120dp"
         android:layout_height="70dp"
-        android:background="#FFFFFF"
+        android:background="#00FFFFFF"
         android:scaleType="fitCenter"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toStartOf="@+id/iconListButton"
-        app:layout_constraintHorizontal_bias="0.615"
+        app:layout_constraintBottom_toBottomOf="@+id/iconGunplaListButton"
+        app:layout_constraintEnd_toStartOf="@+id/iconGunplaListButton"
+        app:layout_constraintHorizontal_bias="0.8"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/bg"
+        app:layout_constraintTop_toTopOf="@+id/iconGunplaListButton"
         app:srcCompat="@mipmap/back_list_button" />
 
     <ImageButton
-        android:id="@+id/goForwardListButton"
+        android:id="@+id/goForwardGunplaListButton"
         android:layout_width="120dp"
         android:layout_height="70dp"
-        android:background="#FFFFFF"
+        android:background="#00FFFFFF"
         android:scaleType="fitCenter"
-        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintBottom_toBottomOf="@+id/iconGunplaListButton"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toEndOf="@+id/iconListButton"
-        app:layout_constraintTop_toBottomOf="@+id/bg"
+        app:layout_constraintHorizontal_bias="0.2"
+        app:layout_constraintStart_toEndOf="@+id/iconGunplaListButton"
+        app:layout_constraintTop_toTopOf="@+id/iconGunplaListButton"
         app:srcCompat="@mipmap/advance_list_button" />
 
     <ImageView
-        android:id="@+id/currentListIcon"
+        android:id="@+id/currentGunplaListIcon"
         android:layout_width="0dp"
         android:layout_height="0dp"
         android:layout_marginStart="16dp"
         android:layout_marginTop="16dp"
         android:layout_marginEnd="16dp"
         android:layout_marginBottom="16dp"
-        app:layout_constraintBottom_toBottomOf="@+id/iconListButton"
-        app:layout_constraintEnd_toEndOf="@+id/iconListButton"
-        app:layout_constraintStart_toStartOf="@+id/iconListButton"
-        app:layout_constraintTop_toTopOf="@+id/iconListButton"
-        app:srcCompat="@drawable/ic_baseline_architecture_24" />
+        app:layout_constraintBottom_toBottomOf="@+id/iconGunplaListButton"
+        app:layout_constraintEnd_toEndOf="@+id/iconGunplaListButton"
+        app:layout_constraintStart_toStartOf="@+id/iconGunplaListButton"
+        app:layout_constraintTop_toTopOf="@+id/iconGunplaListButton"
+        app:srcCompat="@drawable/number_1" />
+
+    <TextView
+        android:id="@+id/currentGunplaListName"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:fontFamily="@font/iori_family"
+        android:letterSpacing="0.5"
+        android:text="WANTED"
+        android:textColor="@color/white_o"
+        android:textSize="28sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/gunplaListBg"
+        app:layout_constraintVertical_bias="0.0" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

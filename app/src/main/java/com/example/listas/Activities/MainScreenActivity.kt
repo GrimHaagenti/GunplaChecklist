@@ -18,7 +18,7 @@ class MainScreenActivity: AppCompatActivity() {
         val databaseObject = DatabaseObject
 
         databaseObject.InitDatabases()
-
+        databaseObject.readUserLists(this)
 
 
         binding = ActivityMainScreenBinding.inflate(layoutInflater)

@@ -1,20 +1,144 @@
 package com.example.listas.Activities
 
-import androidx.appcompat.app.AppCompatActivity
+import android.app.AlertDialog
+import android.content.DialogInterface
+import android.content.Intent
 import android.os.Bundle
-import com.example.listas.R
-import com.example.listas.databinding.ActivityDetailsPageBinding
+import androidx.activity.viewModels
+import androidx.appcompat.app.AppCompatActivity
+import androidx.recyclerview.widget.ItemTouchHelper
+import androidx.recyclerview.widget.RecyclerView
+import com.example.listas.GunplaListModelView
+import com.example.listas.MyListsRecyclerViewAdapter
 import com.example.listas.databinding.ActivityMyListsBinding
+import com.example.listas.dataclasses.GunplaItem
+import com.example.listas.dataclasses.UserListsEnum
+import com.google.android.material.snackbar.Snackbar
 
 class MyListsActivity : AppCompatActivity() {
 
     lateinit var binding: ActivityMyListsBinding
+
+    val gunplalistmodelview by viewModels<GunplaListModelView>()
+    lateinit var myListsRecyclerViewAdapter: MyListsRecyclerViewAdapter
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivityMyListsBinding.inflate(layoutInflater)
 
 
-        setContentView(R.layout.activity_my_lists)
+
+        myListsRecyclerViewAdapter = MyListsRecyclerViewAdapter(this, gunplalistmodelview.getItemsOnCurrentList())
+
+        binding.currentMyListName.text = gunplalistmodelview.databaseObject.currentList.name
+
+        ItemTouchHelper(object: ItemTouchHelper.SimpleCallback(0, ItemTouchHelper.RIGHT){
+            override fun onMove(
+                recyclerView: RecyclerView,
+                viewHolder: RecyclerView.ViewHolder,
+                target: RecyclerView.ViewHolder
+            ): Boolean {
+                return false
+            }
+
+            override fun onSwiped(viewHolder: RecyclerView.ViewHolder, direction: Int) {
+                val item : GunplaItem = gunplalistmodelview.getItemsOnCurrentList()[viewHolder.adapterPosition]
+                val position = viewHolder.adapterPosition
+                manageSendElementForward(item.id)
+                Snackbar.make(binding.currentListRecyclerView, "Moved " + item.name + " to next list", Snackbar.LENGTH_LONG)
+                    /*.setAction(
+                        "Undo",
+                        View.OnClickListener {
+                            // adding on click listener to our action of snack bar.
+                            // below line is to add our item to array list with a position.
+                            courseList.add(position, deletedCourse)
+
+                            // below line is to notify item is
+                            // added to our adapter class.
+                            courseRVAdapter.notifyItemInserted(position)
+                        })*/.show()
+            }
+
+
+        }).attachToRecyclerView(binding.currentListRecyclerView)
+
+        binding.iconMyListButton.setOnClickListener{
+            val dialog = AlertDialog.Builder(this)
+            dialog.setTitle("Change to List")
+                .setItems(gunplalistmodelview.databaseObject.enumNamesList
+                    , DialogInterface.OnClickListener{dialog, which ->
+
+                        if(UserListsEnum.values()[which] != null){
+                            gunplalistmodelview.changeCurrentList(UserListsEnum.values()[which])
+                            binding.currentMyListName.text = gunplalistmodelview.databaseObject.currentList.name
+                            binding.currentMyListIcon.setImageResource(gunplalistmodelview.getCurrentListIcon())
+                            changeList()
+                        }
+
+                    })
+            dialog.show()
+        }
+
+
+        binding.goForwardMyListButton.setOnClickListener{
+            gunplalistmodelview.manageForwardListButton()
+            binding.currentMyListName.text = gunplalistmodelview.databaseObject.currentList.name
+            binding.currentMyListIcon.setImageResource(gunplalistmodelview.getCurrentListIcon())
+            changeList()
+        }
+
+        binding.goBackMyListButton.setOnClickListener{
+            gunplalistmodelview.manageBackListButton()
+            binding.currentMyListName.text = gunplalistmodelview.databaseObject.currentList.name
+            binding.currentMyListIcon.setImageResource(gunplalistmodelview.getCurrentListIcon())
+            changeList()
+        }
+
+        binding.goMenuButtonMyLists.setOnClickListener {
+            val intent = Intent(this, MainMenuActivity::class.java)
+            startActivity(intent)
+        }
+
+        binding.currentListRecyclerView.adapter = myListsRecyclerViewAdapter
+
+        setContentView(binding.root)
     }
+
+    override fun onPause() {
+        super.onPause()
+        gunplalistmodelview.manageOnPauseOnDestroy(this)
+    }
+
+    override fun onDestroy() {
+        super.onDestroy()
+        gunplalistmodelview.manageOnPauseOnDestroy(this)
+
+    }
+
+    fun changeList(){
+        myListsRecyclerViewAdapter.updateList(gunplalistmodelview.getItemsOnCurrentList())
+    }
+
+
+
+    fun manageDeleteElementFromList(itemId : Int){
+        gunplalistmodelview.clearItemFromList(itemId)
+        changeList()
+    }
+
+    fun manageSendElementForward(itemId: Int){
+        gunplalistmodelview.sendItemToNextList(itemId)
+        changeList()
+    }
+
+    fun detailActivityStart(id: Int){
+        val intent = Intent(this, DetailsPageActivity::class.java)
+        var intentExtras: Bundle = Bundle(2)
+        intentExtras.putInt("chosenGunplaId", id)
+        intentExtras.putBoolean("fromGunplaList", false)
+        intent.putExtra("extras", intentExtras)
+        startActivity(intent)
+    }
+
+
 }

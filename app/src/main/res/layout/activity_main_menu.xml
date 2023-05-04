@@ -3,38 +3,108 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    android:background="@color/main_blue">
 
     <ImageButton
         android:id="@+id/searchKitsButton"
-        android:layout_width="0dp"
-        android:layout_height="223dp"
+        android:layout_width="300dp"
+        android:layout_height="100dp"
         android:layout_marginStart="24dp"
         android:layout_marginEnd="24dp"
-        android:background="#00FFFFFF"
+        android:background="#00000000"
         android:scaleType="fitCenter"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.285"
-        app:srcCompat="@mipmap/model_kit_button" />
+        app:layout_constraintVertical_bias="0.3"
+        app:srcCompat="@drawable/main_button" />
 
     <ImageButton
         android:id="@+id/myListsButton"
-        android:layout_width="0dp"
-        android:layout_height="223dp"
+        android:layout_width="300dp"
+        android:layout_height="100dp"
         android:layout_marginStart="24dp"
         android:layout_marginEnd="24dp"
         android:background="#00FFFFFF"
         android:scaleType="fitCenter"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.62"
-        app:srcCompat="@mipmap/lists_button" />
+        app:layout_constraintVertical_bias="0.5"
+        app:srcCompat="@drawable/main_button" />
+
+    <ImageView
+        android:id="@+id/optionsButton"
+        android:layout_width="300dp"
+        android:layout_height="100dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.7"
+        app:srcCompat="@drawable/main_button" />
+
+    <TextView
+        android:id="@+id/searchKitsText"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="16dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginBottom="16dp"
+        android:fontFamily="@font/iori_family"
+        android:gravity="center"
+        android:text="@string/mainMenu_searchKits"
+        android:textAlignment="center"
+        android:textColor="@color/text_color"
+        android:textSize="24sp"
+        app:layout_constraintBottom_toBottomOf="@+id/searchKitsButton"
+        app:layout_constraintEnd_toEndOf="@+id/searchKitsButton"
+        app:layout_constraintStart_toStartOf="@+id/searchKitsButton"
+        app:layout_constraintTop_toTopOf="@+id/searchKitsButton" />
+
+    <TextView
+        android:id="@+id/myListText"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="16dp"
+        android:layout_marginEnd="16dp"
+        android:layout_marginBottom="16dp"
+        android:fontFamily="@font/iori_family"
+        android:gravity="center"
+        android:text="@string/mainMenu_myLists"
+        android:textAlignment="center"
+        android:textColor="@color/text_color"
+        android:textSize="24sp"
+        app:layout_constraintBottom_toBottomOf="@+id/myListsButton"
+        app:layout_constraintEnd_toEndOf="@+id/myListsButton"
+        app:layout_constraintStart_toStartOf="@+id/myListsButton"
+        app:layout_constraintTop_toTopOf="@+id/myListsButton" />
+
+    <TextView
+        android:id="@+id/optionsText"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="16dp"
+        android:layout_marginEnd="16dp"
+        android:layout_marginBottom="16dp"
+        android:fontFamily="@font/iori_family"
+        android:gravity="center"
+        android:text="@string/mainMenu_options"
+        android:textAlignment="center"
+        android:textColor="@color/text_color"
+        android:textSize="24sp"
+        app:layout_constraintBottom_toBottomOf="@+id/optionsButton"
+        app:layout_constraintEnd_toEndOf="@+id/optionsButton"
+        app:layout_constraintStart_toStartOf="@+id/optionsButton"
+        app:layout_constraintTop_toTopOf="@+id/optionsButton" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

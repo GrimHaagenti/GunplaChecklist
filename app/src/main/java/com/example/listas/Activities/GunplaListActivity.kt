@@ -1,7 +1,11 @@
 package com.example.listas.Activities
 
+import android.app.AlertDialog
+import android.content.DialogInterface
 import android.content.Intent
+import android.content.res.Resources
 import android.graphics.Bitmap
+import android.net.Uri
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import androidx.recyclerview.widget.GridLayoutManager
@@ -11,120 +15,108 @@ import com.example.listas.GunplaRecyclerViewAdapter
 import com.example.listas.databinding.ActivityGunplaListBinding
 import com.example.listas.dataclasses.UserListsEnum
 import androidx.activity.viewModels
+import androidx.recyclerview.widget.RecyclerView
+import com.example.listas.R
+import com.example.listas.dataclasses.GunplaItem
 
 
 class GunplaListActivity : AppCompatActivity() {
 
     private lateinit var binding : ActivityGunplaListBinding
-    var databaseObject = DatabaseObject
 
-    var currentList :UserListsEnum = UserListsEnum.WANTED
-    //val gunplalistmodelview by viewModels<GunplaListModelView>()
 
+    val gunplalistmodelview by viewModels<GunplaListModelView>()
+    lateinit var gpRecyclerViewAdapter: GunplaRecyclerViewAdapter
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivityGunplaListBinding.inflate(layoutInflater)
 
+        gpRecyclerViewAdapter = GunplaRecyclerViewAdapter(this, gunplalistmodelview.databaseObject.DB.gunplaDatabase)
 
 
         val manager = GridLayoutManager(parent,3)
 
-        binding.goForwardListButton.setOnClickListener{
-            manageForwardListButton()
+        binding.currentGunplaListName.text = gunplalistmodelview.databaseObject.currentList.name
+
+        binding.iconGunplaListButton.setOnClickListener{
+            val dialog = AlertDialog.Builder(this)
+            dialog.setItems(gunplalistmodelview.databaseObject.enumNamesList
+                    , DialogInterface.OnClickListener{ dialog, which ->
+
+                        if(UserListsEnum.values()[which] != null){
+                            gunplalistmodelview.changeCurrentList(UserListsEnum.values()[which])
+                            binding.currentGunplaListName.text = gunplalistmodelview.databaseObject.currentList.name
+                            binding.currentGunplaListIcon.setImageResource(gunplalistmodelview.getCurrentListIcon())
+                            changeList()
+                        }
+
+                    })
+            dialog.show()
         }
-        binding.goBackListButton.setOnClickListener{
-            manageBackListButton()
+
+        binding.goForwardGunplaListButton.setOnClickListener{
+            gunplalistmodelview.manageForwardListButton()
+            binding.currentGunplaListName.text = gunplalistmodelview.databaseObject.currentList.name
+            binding.currentGunplaListIcon.setImageResource(gunplalistmodelview.getCurrentListIcon())
+            changeList()
+
+        }
+        binding.goBackGunplaListButton.setOnClickListener{
+            gunplalistmodelview.manageBackListButton()
+            binding.currentGunplaListName.text = gunplalistmodelview.databaseObject.currentList.name
+            binding.currentGunplaListIcon.setImageResource(gunplalistmodelview.getCurrentListIcon())
+            changeList()
         }
 
         binding.gunplaRecyclerView.layoutManager = manager
-        binding.gunplaRecyclerView.adapter = GunplaRecyclerViewAdapter(this, databaseObject.DB.gunplaDatabase)
 
-        binding.goBackButtonList.setOnClickListener{
+        binding.gunplaRecyclerView.adapter = gpRecyclerViewAdapter
+
+
+
+        binding.goBackButtonGunplaList.setOnClickListener{
             val intent = Intent(this, MainMenuActivity::class.java)
             startActivity(intent)
         }
         setContentView(binding.root)
+
     }
 
-    fun manageForwardListButton(){
-        when(currentList){
-            UserListsEnum.WANTED -> {
-                currentList = UserListsEnum.BACKLOG
-                binding.currentListIcon.setColorFilter(2)
-            }
-            UserListsEnum.BACKLOG -> {
-                currentList = UserListsEnum.STARTED
-                binding.currentListIcon.setColorFilter(3)
-            }
-            UserListsEnum.STARTED -> {
-                currentList = UserListsEnum.ASSEMBLED
-                binding.currentListIcon.setColorFilter(4)
-            }
-            UserListsEnum.ASSEMBLED -> {
-                currentList = UserListsEnum.CUSTOM
-                binding.currentListIcon.setColorFilter(5)
-            }
-            UserListsEnum.CUSTOM -> {
-                currentList = UserListsEnum.FINISHED
-                binding.currentListIcon.setColorFilter(6)
-            }
-            UserListsEnum.FINISHED -> {
-                currentList = UserListsEnum.DISPLAY
-                binding.currentListIcon.setColorFilter(7)
-            }
-            UserListsEnum.DISPLAY -> {
-                currentList = UserListsEnum.WANTED
-                binding.currentListIcon.setColorFilter(0)
-            }
-        }
-    }
-    fun manageBackListButton(){
-        when(currentList){
-            UserListsEnum.WANTED -> {
-                currentList = UserListsEnum.DISPLAY
-                binding.currentListIcon.setColorFilter(7)
-            }
-            UserListsEnum.BACKLOG -> {
-                currentList = UserListsEnum.WANTED
-                binding.currentListIcon.setColorFilter(0)
-            }
-            UserListsEnum.STARTED -> {
-                currentList = UserListsEnum.BACKLOG
-                binding.currentListIcon.setColorFilter(2)
-            }
-            UserListsEnum.ASSEMBLED -> {
-                currentList = UserListsEnum.STARTED
-                binding.currentListIcon.setColorFilter(3)
-            }
-            UserListsEnum.CUSTOM -> {
-                currentList = UserListsEnum.ASSEMBLED
-                binding.currentListIcon.setColorFilter(4)
-            }
-            UserListsEnum.FINISHED -> {
-                currentList = UserListsEnum.CUSTOM
-                binding.currentListIcon.setColorFilter(5)
-            }
-            UserListsEnum.DISPLAY -> {
-                currentList = UserListsEnum.FINISHED
-                binding.currentListIcon.setColorFilter(6)
-            }
-        }
+    override fun onPause() {
+        super.onPause()
+        gunplalistmodelview.manageOnPauseOnDestroy(this)
     }
 
-    fun detailActivityStart(id: Int){
+    override fun onDestroy() {
+        super.onDestroy()
+        gunplalistmodelview.manageOnPauseOnDestroy(this)
+
+    }
+
+    fun manageOnClickItem(itemId:Int){
+        gunplalistmodelview.manageClickOnItem(itemId)
+
+    }
+
+    fun changeList(){
+
+        val idList = gunplalistmodelview.getCurrentIdsOnList()
+
+        gunplalistmodelview.databaseObject.DB.gunplaDatabase.forEachIndexed{ index: Int, gunplaItem: GunplaItem ->
+            gpRecyclerViewAdapter.notifyItemChanged(index, idList.contains(index))
+        }
+
+    }
+
+
+    fun detailActivityStart(id: Int ){
         val intent = Intent(this, DetailsPageActivity::class.java)
-        intent.putExtra("chosenGunplaId", id)
+        var intentExtras: Bundle = Bundle(2)
+        intentExtras.putInt("chosenGunplaId", id)
+        intentExtras.putBoolean("fromGunplaList", true)
+        intent.putExtra("extras", intentExtras)
         startActivity(intent)
     }
-
-    /*fun (id: Int){
-        val intent = Intent(parent, DetailsPageActivity::class.java)
-        intent.putExtra("chosenGunplaId", id)
-        parent.StartActivity(intent)
-
-        StartActivity(intent)
-    }
-*/
 
 }

@@ -17,6 +17,9 @@
         android:theme="@style/Theme.Listas"
         tools:targetApi="31">
         <activity
+            android:name=".Activities.OptionsActivity"
+            android:exported="true" />
+        <activity
             android:name=".Activities.MyListsActivity"
             android:exported="true" />
         <activity

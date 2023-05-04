@@ -1,3 +1,9 @@
 <resources>
     <string name="app_name">Listas</string>
+    <string name="myLists">ListDB</string>
+    <string name="mainMenu_searchKits">Search Kits</string>
+    <string name="mainMenu_myLists">My Lists</string>
+    <string name="mainMenu_options">Options</string>
+    <string name="mainMenu_tapToStart">TAP TO START</string>
+    <string name="details_YearReleased">Year Released: </string>
 </resources>

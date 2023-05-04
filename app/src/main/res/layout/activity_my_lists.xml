@@ -4,17 +4,141 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@color/main_blue"
     tools:context=".Activities.MyListsActivity">
 
-    <Button
-        android:id="@+id/goBackButtonMyLists"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Go Back"
+    <ImageView
+        android:id="@+id/myLists_bg"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="32dp"
+        android:layout_marginEnd="16dp"
+        android:layout_marginBottom="135dp"
+        android:scaleType="fitXY"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.05"
+        app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.023" />
+        app:layout_constraintVertical_bias="0.0"
+        app:srcCompat="@mipmap/main_bg" />
+
+    <ImageButton
+        android:id="@+id/goMenuButtonMyLists"
+        android:layout_width="60dp"
+        android:layout_height="45dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="8dp"
+        android:background="#00FFFFFF"
+        android:scaleType="fitCenter"
+        app:layout_constraintBottom_toBottomOf="@+id/gunplaListBg"
+        app:layout_constraintEnd_toEndOf="@+id/gunplaListBg"
+        app:layout_constraintStart_toStartOf="@+id/myLists_bg"
+        app:layout_constraintTop_toTopOf="@+id/myLists_bg"
+        app:srcCompat="@mipmap/go_back_button_top" />
+
+    <ImageView
+        android:id="@+id/myListInnerContainer"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginEnd="16dp"
+        android:layout_marginBottom="16dp"
+        android:background="#00FFFFFF"
+        android:scaleType="fitXY"
+        app:layout_constraintBottom_toBottomOf="@+id/myLists_bg"
+        app:layout_constraintEnd_toEndOf="@+id/myLists_bg"
+        app:layout_constraintStart_toStartOf="@+id/myLists_bg"
+        app:layout_constraintTop_toBottomOf="@+id/goMenuButtonMyLists"
+        app:srcCompat="@mipmap/inner_container" />
+
+    <ImageButton
+        android:id="@+id/iconMyListButton"
+        android:layout_width="80dp"
+        android:layout_height="80dp"
+        android:background="#00FFFFFF"
+        android:scaleType="fitCenter"
+        android:scaleX="1"
+        android:scaleY="1"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/currentMyListName"
+        app:layout_constraintVertical_bias="0.0"
+        app:srcCompat="@drawable/current_list_button"
+        tools:srcCompat="@drawable/current_list_button" />
+
+    <ImageButton
+        android:id="@+id/goBackMyListButton"
+        android:layout_width="120dp"
+        android:layout_height="70dp"
+        android:background="#00FFFFFF"
+        android:scaleType="fitCenter"
+        app:layout_constraintBottom_toBottomOf="@+id/iconMyListButton"
+        app:layout_constraintEnd_toStartOf="@+id/iconMyListButton"
+        app:layout_constraintHorizontal_bias="0.8"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/iconMyListButton"
+        app:srcCompat="@mipmap/back_list_button" />
+
+    <ImageButton
+        android:id="@+id/goForwardMyListButton"
+        android:layout_width="120dp"
+        android:layout_height="70dp"
+        android:background="#00FFFFFF"
+        android:scaleType="fitCenter"
+        app:layout_constraintBottom_toBottomOf="@+id/iconMyListButton"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.2"
+        app:layout_constraintStart_toEndOf="@+id/iconMyListButton"
+        app:layout_constraintTop_toTopOf="@+id/iconMyListButton"
+        app:srcCompat="@mipmap/advance_list_button" />
+
+    <ImageView
+        android:id="@+id/currentMyListIcon"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="16dp"
+        android:layout_marginEnd="16dp"
+        android:layout_marginBottom="16dp"
+        app:layout_constraintBottom_toBottomOf="@+id/iconMyListButton"
+        app:layout_constraintEnd_toEndOf="@+id/iconMyListButton"
+        app:layout_constraintStart_toStartOf="@+id/iconMyListButton"
+        app:layout_constraintTop_toTopOf="@+id/iconMyListButton"
+        app:srcCompat="@drawable/number_1" />
+
+    <TextView
+        android:id="@+id/currentMyListName"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:fontFamily="@font/iori_family"
+        android:letterSpacing="0.5"
+        android:text="WANTED"
+        android:textColor="@color/white_o"
+        android:textSize="28sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/myLists_bg"
+        app:layout_constraintVertical_bias="0.0" />
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/currentListRecyclerView"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="16dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginBottom="16dp"
+        android:paddingVertical="1sp"
+        android:paddingTop="5sp"
+        app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+        app:layout_constraintBottom_toBottomOf="@+id/myListInnerContainer"
+        app:layout_constraintEnd_toEndOf="@+id/myListInnerContainer"
+        app:layout_constraintStart_toStartOf="@+id/myListInnerContainer"
+        app:layout_constraintTop_toTopOf="@+id/myListInnerContainer"
+        tools:listitem="@layout/item_my_list_item" />
 </androidx.constraintlayout.widget.ConstraintLayout>

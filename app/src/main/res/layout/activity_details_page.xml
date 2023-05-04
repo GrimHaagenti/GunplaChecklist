@@ -3,18 +3,36 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    android:background="@color/main_blue">
+
+    <ImageView
+        android:id="@+id/detailsBG"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="32dp"
+        android:layout_marginEnd="16dp"
+        android:layout_marginBottom="32dp"
+        android:scaleType="fitXY"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.0"
+        app:srcCompat="@mipmap/main_bg" />
 
     <ImageView
         android:id="@+id/boxArt"
         android:layout_width="0dp"
         android:layout_height="196dp"
-        android:layout_marginStart="65dp"
+        android:layout_marginStart="8dp"
         android:layout_marginTop="32dp"
-        android:layout_marginEnd="65dp"
-        app:layout_constraintEnd_toEndOf="parent"
+        android:layout_marginEnd="8dp"
+        app:layout_constraintEnd_toEndOf="@+id/detailsBG"
         app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintStart_toStartOf="@+id/detailsBG"
         app:layout_constraintTop_toBottomOf="@+id/fullName"
         app:srcCompat="@drawable/ic_launcher_background" />
 
@@ -22,47 +40,74 @@
         android:id="@+id/scaleText"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="100dp"
-        android:text="1/100 MG"
+        android:layout_marginTop="8dp"
+        android:fontFamily="@font/iori_family"
+        android:text="1/100"
+        android:textColor="@color/text_color"
         android:textSize="20sp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintBottom_toBottomOf="@+id/detailsBG"
+        app:layout_constraintEnd_toEndOf="@+id/detailsBG"
+        app:layout_constraintStart_toStartOf="@+id/detailsBG"
+        app:layout_constraintTop_toBottomOf="@+id/goBackButtonDetails"
+        app:layout_constraintVertical_bias="0.0" />
+
+    <TextView
+        android:id="@+id/gradeText"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:fontFamily="@font/iori_family"
+        android:text="MG"
+        android:textColor="@color/text_color"
+        android:textSize="20sp"
+        app:layout_constraintEnd_toEndOf="@+id/detailsBG"
+        app:layout_constraintStart_toStartOf="@+id/detailsBG"
+        app:layout_constraintTop_toBottomOf="@+id/scaleText" />
 
     <TextView
         android:id="@+id/fullName"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_marginStart="40dp"
-        android:layout_marginTop="24dp"
-        android:layout_marginEnd="40dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginEnd="16dp"
+        android:fontFamily="@font/iori_family"
         android:text="OZ -13 MS GUNDAM EPYON (EW VER.)"
         android:textAlignment="center"
+        android:textColor="@color/text_color"
         android:textSize="24sp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/scaleText" />
+        app:layout_constraintEnd_toEndOf="@+id/detailsBG"
+        app:layout_constraintStart_toStartOf="@+id/detailsBG"
+        app:layout_constraintTop_toBottomOf="@+id/gradeText" />
 
     <TextView
         android:id="@+id/releaseDate"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_marginStart="42dp"
+        android:layout_marginStart="24dp"
         android:layout_marginTop="24dp"
-        android:layout_marginEnd="42dp"
+        android:layout_marginEnd="24dp"
+        android:fontFamily="@font/iori_family"
         android:text="Year Released: 2011"
+        android:textColor="@color/text_color"
         android:textSize="20sp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="@+id/detailsBG"
+        app:layout_constraintStart_toStartOf="@+id/detailsBG"
         app:layout_constraintTop_toBottomOf="@+id/boxArt" />
 
-    <Button
+    <ImageButton
         android:id="@+id/goBackButtonDetails"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="16dp"
-        android:layout_marginTop="16dp"
-        android:text="Go Back"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        android:layout_width="70dp"
+        android:layout_height="60dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="8dp"
+        android:background="#00FFFFFF"
+        android:scaleType="fitCenter"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="@+id/detailsBG"
+        app:layout_constraintTop_toTopOf="@+id/detailsBG"
+        app:layout_constraintVertical_bias="0.0"
+        app:srcCompat="@mipmap/go_back_button_top" />
+
 </androidx.constraintlayout.widget.ConstraintLayout>

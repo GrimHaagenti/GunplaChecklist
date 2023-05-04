@@ -13,7 +13,7 @@ data class UserLists(
     @SerializedName("Assambled")
     var assembled : ArrayList<Int> = arrayListOf(),
     @SerializedName("Customizing")
-    var customizing : ArrayList<CustomListItem> = arrayListOf(),
+    var customizing : ArrayList<Int> = arrayListOf(),
     @SerializedName("Done")
     var finished : ArrayList<Int> = arrayListOf(),
     @SerializedName("OnDisplay")

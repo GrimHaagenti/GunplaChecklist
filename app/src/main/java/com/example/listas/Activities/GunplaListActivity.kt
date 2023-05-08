@@ -18,6 +18,7 @@ import androidx.activity.viewModels
 import androidx.recyclerview.widget.RecyclerView
 import com.example.listas.R
 import com.example.listas.dataclasses.GunplaItem
+import com.google.android.gms.ads.AdRequest
 
 
 class GunplaListActivity : AppCompatActivity() {
@@ -34,6 +35,8 @@ class GunplaListActivity : AppCompatActivity() {
 
         gpRecyclerViewAdapter = GunplaRecyclerViewAdapter(this, gunplalistmodelview.databaseObject.DB.gunplaDatabase)
 
+        val adRequest = AdRequest.Builder().build()
+        binding.adView2.loadAd(adRequest)
 
         val manager = GridLayoutManager(parent,3)
 
@@ -76,8 +79,7 @@ class GunplaListActivity : AppCompatActivity() {
 
 
         binding.goBackButtonGunplaList.setOnClickListener{
-            val intent = Intent(this, MainMenuActivity::class.java)
-            startActivity(intent)
+            finish()
         }
         setContentView(binding.root)
 

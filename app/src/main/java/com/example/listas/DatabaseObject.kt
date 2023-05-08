@@ -61,13 +61,7 @@ object DatabaseObject {
     }
 
     fun getLists(): UserLists{
-
-        //try gettin a Json object and parse it
-        var u = UserLists()
-
-
-
-        return u
+        return UserLists()
     }
 
     fun initUserLists(){
@@ -240,9 +234,9 @@ object DatabaseObject {
         val prefsEditor = activity.getSharedPreferences(activity.getString((R.string.myLists)), Context.MODE_PRIVATE)?: return
 
         val editor = prefsEditor.edit()
-        editor.clear()
-        editor.apply()
+        editor.clear().apply()
 
+        readUserLists(activity)
     }
 
     fun writeUserLists(activity: Activity)

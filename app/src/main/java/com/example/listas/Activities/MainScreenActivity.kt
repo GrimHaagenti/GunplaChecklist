@@ -1,10 +1,14 @@
 package com.example.listas.Activities
 
+import android.animation.Animator
 import android.content.Intent
 import android.os.Bundle
+import android.view.animation.Animation
+import android.view.animation.AnimationUtils
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import com.example.listas.DatabaseObject
+import com.example.listas.R
 import com.example.listas.databinding.ActivityMainScreenBinding
 import com.google.android.gms.ads.MobileAds
 
@@ -33,6 +37,8 @@ class MainScreenActivity: AppCompatActivity() {
                 Toast.makeText(this, "Database not ready", Toast.LENGTH_SHORT).show()
             }
         }
+        var anim = AnimationUtils.loadAnimation(this, R.anim.alpha_blink)
+        binding.TapToEnterText.startAnimation(anim)
 
         setContentView(binding.root)
     }

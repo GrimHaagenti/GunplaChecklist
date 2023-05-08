@@ -13,6 +13,7 @@ import com.example.listas.MyListsRecyclerViewAdapter
 import com.example.listas.databinding.ActivityMyListsBinding
 import com.example.listas.dataclasses.GunplaItem
 import com.example.listas.dataclasses.UserListsEnum
+import com.google.android.gms.ads.AdRequest
 import com.google.android.material.snackbar.Snackbar
 
 class MyListsActivity : AppCompatActivity() {
@@ -26,7 +27,8 @@ class MyListsActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         binding = ActivityMyListsBinding.inflate(layoutInflater)
 
-
+        val adRequest = AdRequest.Builder().build()
+        binding.adView3.loadAd(adRequest)
 
         myListsRecyclerViewAdapter = MyListsRecyclerViewAdapter(this, gunplalistmodelview.getItemsOnCurrentList())
 
@@ -95,8 +97,7 @@ class MyListsActivity : AppCompatActivity() {
         }
 
         binding.goMenuButtonMyLists.setOnClickListener {
-            val intent = Intent(this, MainMenuActivity::class.java)
-            startActivity(intent)
+            finish()
         }
 
         binding.currentListRecyclerView.adapter = myListsRecyclerViewAdapter

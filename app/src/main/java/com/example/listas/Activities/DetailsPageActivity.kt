@@ -37,7 +37,8 @@ class DetailsPageActivity: AppCompatActivity() {
 
         binding.goBackButtonDetails.setOnClickListener {
 
-            val fromGList = extras?.getBoolean("fromGunplaList")
+            finish()
+            /*val fromGList = extras?.getBoolean("fromGunplaList")
             if (fromGList != null) {
                 if(fromGList)
                 {
@@ -50,7 +51,7 @@ class DetailsPageActivity: AppCompatActivity() {
             }else{
                 val intent = Intent(this, MainMenuActivity::class.java)
                 startActivity(intent)
-            }
+            }*/
         }
         setContentView(binding.root)
     }

@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">Listas</string>
+    <string name="app_name">Gunpla Checklist</string>
     <string name="myLists">ListDB</string>
     <string name="mainMenu_searchKits">Search Kits</string>
     <string name="mainMenu_myLists">My Lists</string>

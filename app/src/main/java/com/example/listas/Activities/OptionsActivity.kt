@@ -33,7 +33,7 @@ class OptionsActivity : AppCompatActivity() {
             finish()
         }
 
-        var anim = AnimationUtils.loadAnimation(this, R.anim.alpha_blink)
+        var anim = AnimationUtils.loadAnimation(this, R.anim.alpha_blink_slow)
         binding.bg6.startAnimation(anim)
 
         setContentView(binding.root)

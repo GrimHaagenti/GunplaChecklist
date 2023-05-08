@@ -39,7 +39,7 @@ class DetailsPageActivity: AppCompatActivity() {
         binding.goBackButtonDetails.setOnClickListener{
             finish()
             }
-        var anim = AnimationUtils.loadAnimation(this, R.anim.alpha_blink)
+        var anim = AnimationUtils.loadAnimation(this, R.anim.alpha_blink_slow)
         binding.bg.startAnimation(anim)
 
         setContentView(binding.root)

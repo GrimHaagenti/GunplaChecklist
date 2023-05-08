@@ -138,7 +138,7 @@ class MyListsActivity : AppCompatActivity() {
 
         binding.currentListRecyclerView.adapter = myListsRecyclerViewAdapter
 
-        var anim = AnimationUtils.loadAnimation(this, R.anim.alpha_blink)
+        var anim = AnimationUtils.loadAnimation(this, R.anim.alpha_blink_slow)
         binding.bg5.startAnimation(anim)
 
         setContentView(binding.root)

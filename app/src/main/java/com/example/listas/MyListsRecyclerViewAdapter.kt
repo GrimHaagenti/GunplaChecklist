@@ -52,9 +52,9 @@ class MyListsRecyclerViewAdapter (
 
             // Create Dialog
             val dialog = AlertDialog.Builder(parent)
-            dialog.setTitle("Are u sure you wanna delete?")
-            dialog.setPositiveButton("Cancel") { _: DialogInterface, i: Int -> }
-            dialog.setNegativeButton("Yes"){ dialogInterface: DialogInterface, i: Int -> parent.manageDeleteElementFromList(element.id)}
+            dialog.setTitle("Are you sure you wanna delete " + element.name  + " from " + parent.gunplalistmodelview.databaseObject.currentList.name + "?")
+            dialog.setNegativeButton("Cancel") { _: DialogInterface, i: Int -> }
+            dialog.setPositiveButton("Yes"){ dialogInterface: DialogInterface, i: Int -> parent.manageDeleteElementFromList(element.id)}
             dialog.show()
 
 
@@ -64,13 +64,15 @@ class MyListsRecyclerViewAdapter (
 
         holder.sendToListButton.setOnClickListener{
             val dialog = AlertDialog.Builder(parent)
-            dialog.setTitle("Change to List")
+            dialog.setTitle("Send " + element.name  + " from " + parent.gunplalistmodelview.databaseObject.currentList + " to another List?")
                 .setItems(parent.gunplalistmodelview.databaseObject.enumNamesList
                     , DialogInterface.OnClickListener{dialog, which ->
 
                         if(UserListsEnum.values()[which] != null){
                             parent.gunplalistmodelview.sendItemtoList(element.id, UserListsEnum.values()[which])
                             parent.changeList()
+
+
                         }
 
                     })

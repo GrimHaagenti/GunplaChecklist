@@ -6,6 +6,18 @@
     android:layout_height="match_parent"
     android:background="@color/main_blue">
 
+    <ImageView
+        android:id="@+id/bg3"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:alpha="0.3"
+        android:scaleType="center"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@mipmap/bg" />
+
     <ImageButton
         android:id="@+id/searchKitsButton"
         android:layout_width="300dp"

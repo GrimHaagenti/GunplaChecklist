@@ -157,16 +157,20 @@ object DatabaseObject {
         }
     }
 
-    fun manageClickOnItem(listName: UserListsEnum, gunplaId: Int)
+    fun manageClickOnItem (listName: UserListsEnum, gunplaId: Int): Boolean
     {
+        var addedToList = false
         when (listName){
             UserListsEnum.WANTED -> {
                 if(userListsDatabase.wanted.contains(gunplaId))
                 {
                     userListsDatabase.wanted.remove(gunplaId)
+                    addedToList = false
+
                 }
                 else{
                     userListsDatabase.wanted.add(gunplaId)
+                    addedToList = true
                 }
 
             }
@@ -174,58 +178,72 @@ object DatabaseObject {
                 if(userListsDatabase.backlog.contains(gunplaId))
                 {
                     userListsDatabase.backlog.remove(gunplaId)
+                    addedToList = false
                 }
                 else{
                     userListsDatabase.backlog.add(gunplaId)
+                    addedToList = true
                 }
             }
             UserListsEnum.STARTED -> {
                 if(userListsDatabase.started.contains(gunplaId))
                 {
                     userListsDatabase.started.remove(gunplaId)
+                    addedToList = false
                 }
                 else{
                     userListsDatabase.started.add(gunplaId)
+                    addedToList = true
                 }
             }
             UserListsEnum.ASSEMBLED -> {
                 if(userListsDatabase.assembled.contains(gunplaId))
                 {
                     userListsDatabase.assembled.remove(gunplaId)
+                    addedToList = false
                 }
                 else{
                     userListsDatabase.assembled.add(gunplaId)
+                    addedToList = true
                 }
             }
             UserListsEnum.CUSTOM -> {
                 if(userListsDatabase.customizing.contains(gunplaId))
                 {
                     userListsDatabase.customizing.remove(gunplaId)
+                    addedToList = false
                 }
                 else{
                     userListsDatabase.customizing.add(gunplaId)
+                    addedToList = true
                 }
             }
             UserListsEnum.FINISHED -> {
                 if(userListsDatabase.finished.contains(gunplaId))
                 {
                     userListsDatabase.finished.remove(gunplaId)
+                    addedToList = false
                 }
                 else{
                     userListsDatabase.finished.add(gunplaId)
+                    addedToList = true
                 }
             }
             UserListsEnum.DISPLAY -> {
                 if(userListsDatabase.onDisplay.contains(gunplaId))
                 {
                     userListsDatabase.onDisplay.remove(gunplaId)
+                    addedToList = false
                 }
                 else{
                     userListsDatabase.onDisplay.add(gunplaId)
+                    addedToList = true
                 }
+
             }
         }
 
+        return addedToList
     }
 
     //var gunplaList = gunplaDatabase.gunplaDatabase

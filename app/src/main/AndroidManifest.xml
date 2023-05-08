@@ -15,6 +15,7 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.Listas"
+        android:screenOrientation="sensorPortrait"
         tools:targetApi="31">
         <meta-data
             android:name="com.google.android.gms.ads.APPLICATION_ID"
@@ -22,16 +23,24 @@
             />
         <activity
             android:name=".Activities.OptionsActivity"
-            android:exported="true" />
+            android:exported="true"
+            android:screenOrientation="sensorPortrait"
+            />
         <activity
             android:name=".Activities.MyListsActivity"
-            android:exported="true" />
+            android:exported="true"
+            android:screenOrientation="sensorPortrait"
+            />
         <activity
             android:name=".Activities.MainMenuActivity"
-            android:exported="true" />
+            android:exported="true"
+            android:screenOrientation="sensorPortrait"
+            />
         <activity
             android:name=".Activities.MainScreenActivity"
-            android:exported="true">
+            android:exported="true"
+            android:screenOrientation="sensorPortrait"
+            >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
@@ -40,10 +49,14 @@
         </activity>
         <activity
             android:name=".Activities.GunplaListActivity"
-            android:exported="true" />
+            android:exported="true"
+            android:screenOrientation="sensorPortrait"
+            />
         <activity
             android:name=".Activities.DetailsPageActivity"
-            android:exported="true" />
+            android:exported="true"
+            android:screenOrientation="sensorPortrait"
+            />
     </application>
 
 </manifest>

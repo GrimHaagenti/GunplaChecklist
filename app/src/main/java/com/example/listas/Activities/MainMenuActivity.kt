@@ -2,8 +2,10 @@ package com.example.listas.Activities
 
 import android.content.Intent
 import android.os.Bundle
+import android.view.animation.AnimationUtils
 import androidx.appcompat.app.AppCompatActivity
 import com.example.listas.DatabaseObject
+import com.example.listas.R
 import com.example.listas.databinding.ActivityMainMenuBinding
 import com.example.listas.dataclasses.UserListsEnum
 import com.google.android.gms.ads.AdRequest
@@ -37,6 +39,9 @@ class MainMenuActivity: AppCompatActivity() {
             val intent = Intent(this, OptionsActivity::class.java)
             startActivity(intent)
         }
+
+        var anim = AnimationUtils.loadAnimation(this, R.anim.alpha_blink)
+        binding.bg3.startAnimation(anim)
 
         setContentView(binding.root)
 

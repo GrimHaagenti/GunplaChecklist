@@ -3,6 +3,7 @@ package com.example.listas.Activities
 import android.annotation.SuppressLint
 import android.content.Intent
 import android.os.Bundle
+import android.view.animation.AnimationUtils
 import android.widget.ImageView
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
@@ -35,24 +36,12 @@ class DetailsPageActivity: AppCompatActivity() {
         if(gunplaId < 0) {Toast.makeText(this, "ERROR", Toast.LENGTH_SHORT)}
         else {changeDetails(gunplaId)}
 
-        binding.goBackButtonDetails.setOnClickListener {
-
+        binding.goBackButtonDetails.setOnClickListener{
             finish()
-            /*val fromGList = extras?.getBoolean("fromGunplaList")
-            if (fromGList != null) {
-                if(fromGList)
-                {
-                    val intent = Intent(this, GunplaListActivity::class.java)
-                    startActivity(intent)
-                } else{
-                    val intent = Intent(this, MyListsActivity::class.java)
-                    startActivity(intent)
-                }
-            }else{
-                val intent = Intent(this, MainMenuActivity::class.java)
-                startActivity(intent)
-            }*/
-        }
+            }
+        var anim = AnimationUtils.loadAnimation(this, R.anim.alpha_blink)
+        binding.bg.startAnimation(anim)
+
         setContentView(binding.root)
     }
     fun changeDetails(id: Int){
@@ -62,6 +51,10 @@ class DetailsPageActivity: AppCompatActivity() {
         binding.gradeText.text = databaseObject.DB.gunplaDatabase[id].grade
         val dateStr :String =  getString(R.string.details_YearReleased) + " " + databaseObject.DB.gunplaDatabase[id].date
         binding.releaseDate.text = dateStr
+        val priceStr :String = getString(R.string.details_RetailPrice) + " " + databaseObject.DB.gunplaDatabase[id].standardPrice + "¥"
+        binding.retailPriceText.text = priceStr
+        val seriesStr :String = getString(R.string.details_Series) + " " + databaseObject.DB.gunplaDatabase[id].series
+        binding.seriesText.text = seriesStr
     }
 
     fun getBoxArt(url: String, imageView: ImageView?) {

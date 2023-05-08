@@ -4,12 +4,14 @@ import android.app.AlertDialog
 import android.content.DialogInterface
 import android.content.Intent
 import android.os.Bundle
+import android.view.animation.AnimationUtils
 import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.ItemTouchHelper
 import androidx.recyclerview.widget.RecyclerView
 import com.example.listas.GunplaListModelView
 import com.example.listas.MyListsRecyclerViewAdapter
+import com.example.listas.R
 import com.example.listas.databinding.ActivityMyListsBinding
 import com.example.listas.dataclasses.GunplaItem
 import com.example.listas.dataclasses.UserListsEnum
@@ -33,6 +35,7 @@ class MyListsActivity : AppCompatActivity() {
         myListsRecyclerViewAdapter = MyListsRecyclerViewAdapter(this, gunplalistmodelview.getItemsOnCurrentList())
 
         binding.currentMyListName.text = gunplalistmodelview.databaseObject.currentList.name
+        binding.currentMyListIcon.setImageResource(gunplalistmodelview.getCurrentListIcon())
 
         ItemTouchHelper(object: ItemTouchHelper.SimpleCallback(0, ItemTouchHelper.RIGHT){
             override fun onMove(
@@ -44,23 +47,56 @@ class MyListsActivity : AppCompatActivity() {
             }
 
             override fun onSwiped(viewHolder: RecyclerView.ViewHolder, direction: Int) {
+
                 val item : GunplaItem = gunplalistmodelview.getItemsOnCurrentList()[viewHolder.adapterPosition]
                 val position = viewHolder.adapterPosition
                 manageSendElementForward(item.id)
-                Snackbar.make(binding.currentListRecyclerView, "Moved " + item.name + " to next list", Snackbar.LENGTH_LONG)
-                    /*.setAction(
-                        "Undo",
-                        View.OnClickListener {
-                            // adding on click listener to our action of snack bar.
-                            // below line is to add our item to array list with a position.
-                            courseList.add(position, deletedCourse)
-
-                            // below line is to notify item is
-                            // added to our adapter class.
-                            courseRVAdapter.notifyItemInserted(position)
-                        })*/.show()
+                if (gunplalistmodelview.databaseObject.currentList.ordinal < UserListsEnum.DISPLAY.ordinal ) {
+                    Snackbar.make(binding.currentListRecyclerView,
+                        "Moved " + item.name + " to next list",
+                        Snackbar.LENGTH_LONG)
+                        .show()
+                }else
+                {
+                    Snackbar.make(binding.currentListRecyclerView,
+                        "Can't move " + item.name + " further",
+                        Snackbar.LENGTH_LONG)
+                        .show()
+                }
             }
 
+
+        }).attachToRecyclerView(binding.currentListRecyclerView)
+
+        ItemTouchHelper(object: ItemTouchHelper.SimpleCallback(0, ItemTouchHelper.LEFT){
+            override fun onMove(
+                recyclerView: RecyclerView,
+                viewHolder: RecyclerView.ViewHolder,
+                target: RecyclerView.ViewHolder
+            ): Boolean {
+                return false
+            }
+
+            override fun onSwiped(viewHolder: RecyclerView.ViewHolder, direction: Int) {
+
+                val item: GunplaItem =
+                    gunplalistmodelview.getItemsOnCurrentList()[viewHolder.adapterPosition]
+                val position = viewHolder.adapterPosition
+                manageSendElementBack(item.id)
+
+                if (gunplalistmodelview.databaseObject.currentList.ordinal > 0) {
+                    Snackbar.make(binding.currentListRecyclerView,
+                        "Moved " + item.name + " to previous list",
+                        Snackbar.LENGTH_LONG)
+                        .show()
+                }else
+                {
+                    Snackbar.make(binding.currentListRecyclerView,
+                        "Can't move " + item.name + " further",
+                        Snackbar.LENGTH_LONG)
+                        .show()
+                }
+            }
 
         }).attachToRecyclerView(binding.currentListRecyclerView)
 
@@ -102,6 +138,9 @@ class MyListsActivity : AppCompatActivity() {
 
         binding.currentListRecyclerView.adapter = myListsRecyclerViewAdapter
 
+        var anim = AnimationUtils.loadAnimation(this, R.anim.alpha_blink)
+        binding.bg5.startAnimation(anim)
+
         setContentView(binding.root)
     }
 
@@ -126,7 +165,10 @@ class MyListsActivity : AppCompatActivity() {
         gunplalistmodelview.clearItemFromList(itemId)
         changeList()
     }
-
+    fun manageSendElementBack(itemId: Int){
+        gunplalistmodelview.sendItemToPreviousList(itemId)
+        changeList()
+    }
     fun manageSendElementForward(itemId: Int){
         gunplalistmodelview.sendItemToNextList(itemId)
         changeList()

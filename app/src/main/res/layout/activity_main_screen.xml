@@ -23,6 +23,18 @@
         tools:srcCompat="@drawable/ic_transparent" />
 
     <ImageView
+        android:id="@+id/bg4"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:alpha="0.2"
+        android:scaleType="center"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@mipmap/bg" />
+
+    <ImageView
         android:id="@+id/MainTitle"
         android:layout_width="0dp"
         android:layout_height="wrap_content"

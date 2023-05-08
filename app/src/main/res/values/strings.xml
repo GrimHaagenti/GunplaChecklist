@@ -6,4 +6,6 @@
     <string name="mainMenu_options">Options</string>
     <string name="mainMenu_tapToStart">TAP TO START</string>
     <string name="details_YearReleased">Year Released: </string>
+    <string name="details_RetailPrice">Retail Price: </string>
+    <string name="details_Series">Series: </string>
 </resources>

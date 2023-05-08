@@ -24,8 +24,8 @@ class GunplaListModelView: ViewModel() {
         return databaseObject.getIdsOnCurrentList(databaseObject.currentList)
     }
 
-    fun manageClickOnItem(itemId:Int){
-        databaseObject.manageClickOnItem(databaseObject.currentList, itemId)
+    fun manageClickOnItem(itemId:Int): Boolean{
+        return databaseObject.manageClickOnItem(databaseObject.currentList, itemId)
     }
 
     fun getItemsOnCurrentList(): ArrayList<GunplaItem>{
@@ -81,6 +81,14 @@ class GunplaListModelView: ViewModel() {
 
         databaseObject.clearItemFromList(itemId)
         databaseObject.addItemToList(itemId, UserListsEnum.values()[nextListNumber])
+    }
+    fun sendItemToPreviousList(itemId: Int){
+
+        var previousListNumber = databaseObject.currentList.ordinal - 1
+        previousListNumber = Math.max(previousListNumber, 0)
+
+        databaseObject.clearItemFromList(itemId)
+        databaseObject.addItemToList(itemId, UserListsEnum.values()[previousListNumber])
     }
 
 

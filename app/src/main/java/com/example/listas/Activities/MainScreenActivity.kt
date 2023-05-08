@@ -39,6 +39,7 @@ class MainScreenActivity: AppCompatActivity() {
         }
         var anim = AnimationUtils.loadAnimation(this, R.anim.alpha_blink)
         binding.TapToEnterText.startAnimation(anim)
+        binding.bg4.startAnimation(anim)
 
         setContentView(binding.root)
     }

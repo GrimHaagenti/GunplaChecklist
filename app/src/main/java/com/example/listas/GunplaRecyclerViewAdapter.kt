@@ -13,6 +13,7 @@ import androidx.recyclerview.widget.RecyclerView
 import com.example.listas.Activities.GunplaListActivity
 import com.example.listas.databinding.ItemGunplaBinding
 import com.example.listas.dataclasses.GunplaItem
+import com.google.android.material.snackbar.Snackbar
 import com.squareup.picasso.Picasso
 
 
@@ -79,13 +80,17 @@ class GunplaRecyclerViewAdapter (
         }
         holder.button.setOnClickListener{
 
-            parent.manageOnClickItem(position)
-            parent.changeList()
-            /*val dialog = AlertDialog.Builder(parent)
-            dialog.setTitle("Add to List")
-            dialog.setMessage(" Aun no tengo las listas")
-            dialog.setNegativeButton("Cancel") { _: DialogInterface, i: Int -> }
-            dialog.show()*/
+            if(parent.manageOnClickItem(position)){
+                parent.changeList()
+                Snackbar.make(parent.viewAdapterBinding,  element.name + " added to " + parent.gunplalistmodelview.databaseObject.currentList , Snackbar.LENGTH_LONG)
+                    .show()
+            }else{
+                parent.changeList()
+                Snackbar.make(parent.viewAdapterBinding, element.name + " removed from " + parent.gunplalistmodelview.databaseObject.currentList, Snackbar.LENGTH_LONG)
+                    .show()
+            }
+
+
         }
         val idList = parent.gunplalistmodelview.getCurrentIdsOnList()
 

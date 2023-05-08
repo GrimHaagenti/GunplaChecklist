@@ -8,6 +8,8 @@ import android.graphics.Bitmap
 import android.net.Uri
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.view.View
+import android.view.animation.AnimationUtils
 import androidx.recyclerview.widget.GridLayoutManager
 import com.example.listas.DatabaseObject
 import com.example.listas.GunplaListModelView
@@ -25,7 +27,7 @@ class GunplaListActivity : AppCompatActivity() {
 
     private lateinit var binding : ActivityGunplaListBinding
 
-
+    lateinit var viewAdapterBinding : View
     val gunplalistmodelview by viewModels<GunplaListModelView>()
     lateinit var gpRecyclerViewAdapter: GunplaRecyclerViewAdapter
 
@@ -33,6 +35,7 @@ class GunplaListActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         binding = ActivityGunplaListBinding.inflate(layoutInflater)
 
+        viewAdapterBinding = binding.gunplaRecyclerView
         gpRecyclerViewAdapter = GunplaRecyclerViewAdapter(this, gunplalistmodelview.databaseObject.DB.gunplaDatabase)
 
         val adRequest = AdRequest.Builder().build()
@@ -41,6 +44,7 @@ class GunplaListActivity : AppCompatActivity() {
         val manager = GridLayoutManager(parent,3)
 
         binding.currentGunplaListName.text = gunplalistmodelview.databaseObject.currentList.name
+        binding.currentGunplaListIcon.setImageResource(gunplalistmodelview.getCurrentListIcon())
 
         binding.iconGunplaListButton.setOnClickListener{
             val dialog = AlertDialog.Builder(this)
@@ -81,6 +85,9 @@ class GunplaListActivity : AppCompatActivity() {
         binding.goBackButtonGunplaList.setOnClickListener{
             finish()
         }
+
+        var anim = AnimationUtils.loadAnimation(this, R.anim.alpha_blink)
+        binding.bg2.startAnimation(anim)
         setContentView(binding.root)
 
     }
@@ -96,8 +103,8 @@ class GunplaListActivity : AppCompatActivity() {
 
     }
 
-    fun manageOnClickItem(itemId:Int){
-        gunplalistmodelview.manageClickOnItem(itemId)
+    fun manageOnClickItem(itemId:Int):Boolean{
+        return gunplalistmodelview.manageClickOnItem(itemId)
 
     }
 

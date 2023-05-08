@@ -28,7 +28,11 @@ data class GunplaItem (
     var date: String = "",
 
     @PropertyName("BoxArtURL")
-    var boxArtURL: String = ""
+    var boxArtURL: String = "",
+
+    @PropertyName("StandardPrice")
+    var standardPrice: Int = 0
+
     )
 {
 
